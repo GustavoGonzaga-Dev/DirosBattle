@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Img/RostoFundo.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/HomeDiro.gd" type="Script" id=2]
-[ext_resource path="res://Img/Ovos/OVO-BLUE.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 2.0
@@ -64,9 +63,5 @@ __meta__ = {
 autoplay = "Entrando"
 anims/Entrando = SubResource( 1 )
 anims/Saindo = SubResource( 2 )
-
-[node name="OVO-BLUE" type="Sprite" parent="."]
-position = Vector2( 80, 152 )
-texture = ExtResource( 3 )
 
 [connection signal="animation_finished" from="transição/ColorRect/AnimacaoTransicao" to="." method="_on_AnimacaoTransicao_animation_finished"]

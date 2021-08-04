@@ -228,6 +228,25 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=9]
+size = 9
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 16 )
+
+[sub_resource type="Animation" id=10]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -242,8 +261,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "Saindo"
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
@@ -256,25 +274,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
-
-[sub_resource type="Animation" id=10]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="DynamicFont" id=11]
-size = 9
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 16 )
 
 [node name="Menu" type="Node2D"]
 script = ExtResource( 6 )
@@ -300,7 +299,7 @@ position = Vector2( 93.8347, 30.3186 )
 scale = Vector2( 0.348061, 0.331229 )
 frames = SubResource( 1 )
 animation = "estrelas"
-frame = 11
+frame = 4
 playing = true
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
@@ -314,7 +313,7 @@ rotation = 0.364774
 scale = Vector2( 0.312126, 0.386383 )
 frames = SubResource( 2 )
 animation = "cometa"
-frame = 7
+frame = 4
 playing = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
@@ -434,22 +433,6 @@ hframes = 50
 anims/RodaRodaJequiti = SubResource( 6 )
 anims/surgindopraneta = SubResource( 7 )
 
-[node name="transição" type="Node" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="transição"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="AnimacaoTransicao" type="AnimationPlayer" parent="transição/ColorRect"]
-autoplay = "Entrando"
-anims/Entrando = SubResource( 8 )
-anims/Saindo = SubResource( 9 )
-
 [node name="botao" type="Node" parent="."]
 
 [node name="TextureButton" type="TextureButton" parent="botao"]
@@ -466,7 +449,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayerBotao" type="AnimationPlayer" parent="botao/TextureButton"]
-anims/aparecerBotao = SubResource( 10 )
+anims/aparecerBotao = SubResource( 8 )
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="botao"]
 visible = false
@@ -482,12 +465,28 @@ margin_left = 20.0
 margin_top = 270.0
 margin_right = 148.0
 margin_bottom = 284.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Todos os direitos reservados"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="transição" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="transição"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AnimacaoTransicao" type="AnimationPlayer" parent="transição/ColorRect"]
+autoplay = "Entrando"
+anims/Entrando = SubResource( 10 )
+anims/Saindo = SubResource( 11 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
@@ -495,7 +494,7 @@ wait_time = 0.3
 [connection signal="animation_finished" from="Fundo/animaçao/logoAnima" to="." method="_on_logoAnima_animation_finished"]
 [connection signal="animation_finished" from="Fundo/animaçao2/animaLogo2" to="." method="_on_animaLogo2_animation_finished"]
 [connection signal="animation_finished" from="Fundo/planetas/planeta1/AnimationPlayerPlaneta" to="." method="_on_AnimationPlayerPlaneta_animation_finished"]
-[connection signal="animation_finished" from="transição/ColorRect/AnimacaoTransicao" to="." method="_on_AnimacaoTransicao_animation_finished"]
 [connection signal="animation_finished" from="botao/TextureButton/AnimationPlayerBotao" to="." method="_on_AnimationPlayerBotao_animation_finished"]
 [connection signal="pressed" from="botao/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="animation_finished" from="transição/ColorRect/AnimacaoTransicao" to="." method="_on_AnimacaoTransicao_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
