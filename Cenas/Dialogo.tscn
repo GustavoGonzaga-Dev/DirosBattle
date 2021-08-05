@@ -30,7 +30,7 @@
 [ext_resource path="res://Img/semFundo.png" type="Texture" id=28]
 [ext_resource path="res://Img/Botoes/BOTAO_Dia.png" type="Texture" id=29]
 [ext_resource path="res://Img/Botoes/BOTAO_Noite.png" type="Texture" id=30]
-[ext_resource path="res://Img/Ovos/OVO-ROSA.png" type="Texture" id=31]
+[ext_resource path="res://Img/Ovos/OVO-VERDE.png" type="Texture" id=31]
 [ext_resource path="res://Img/Ovos/OVO-BLUE.png" type="Texture" id=32]
 [ext_resource path="res://Img/planetas/praneta3.png" type="Texture" id=33]
 
@@ -73,11 +73,11 @@ tracks/1/keys = {
 "values": [ 0.5 ]
 }
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=4]
 size = 7
 font_data = ExtResource( 26 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=5]
 resource_name = "Sumindo"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -92,7 +92,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ) ],
 "loop": true,
@@ -100,7 +100,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 4 ), ExtResource( 25 ), ExtResource( 22 ) ],
 "loop": true,
@@ -135,54 +135,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "Aparecendo"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=15]
-resource_name = "Sumindo"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
 [sub_resource type="Animation" id=9]
-resource_name = "mexendo"
-length = 0.6
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=16]
 resource_name = "Aparecendo"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -195,25 +148,24 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=17]
-resource_name = "Sumindo"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=10]
-resource_name = "mexendo"
+resource_name = "Sumindo"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -229,8 +181,53 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "RodaRodaJequiti"
+[sub_resource type="Animation" id=12]
+resource_name = "Aparecendo"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Sumindo"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=15]
 length = 7.4
 loop = true
 step = 0.15
@@ -259,7 +256,7 @@ tracks/1/keys = {
 "values": [ Vector2( 192, 224 ), Vector2( 168, 248 ), Vector2( 96, 272 ), Vector2( 16, 264 ), Vector2( -56, 128 ), Vector2( -80, 64 ), Vector2( -16, 40 ), Vector2( 32, 16 ), Vector2( 104, 8 ), Vector2( 168, 64 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=16]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -273,7 +270,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=17]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -288,7 +285,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=18]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -396,14 +393,14 @@ margin_left = 56.0
 margin_top = 232.0
 margin_right = 102.0
 margin_bottom = 251.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 4 )
 text = "Proximo"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimeProximo" type="AnimationPlayer" parent="TextBox/Proximo"]
-anims/Sumindo = SubResource( 18 )
+anims/Sumindo = SubResource( 5 )
 
 [node name="Fundo" type="Node" parent="."]
 
@@ -424,9 +421,9 @@ script = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer6"]
 position = Vector2( 93.8347, 30.3186 )
 scale = Vector2( 0.348061, 0.331229 )
-frames = SubResource( 4 )
+frames = SubResource( 6 )
 animation = "estrelas"
-frame = 4
+frame = 5
 playing = true
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
@@ -438,9 +435,9 @@ script = ExtResource( 3 )
 position = Vector2( 58.6547, 9.39308 )
 rotation = 0.364774
 scale = Vector2( 0.312126, 0.386383 )
-frames = SubResource( 5 )
+frames = SubResource( 7 )
 animation = "cometa"
-frame = 4
+frame = 1
 playing = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
@@ -517,22 +514,23 @@ texture = ExtResource( 32 )
 vframes = 2
 
 [node name="AnimationOvoAzul" type="AnimationPlayer" parent="Ovos/OVO-BLUE"]
-anims/Aparecendo = SubResource( 14 )
-anims/Sumindo = SubResource( 15 )
-anims/mexendo = SubResource( 9 )
+anims/Aparecendo = SubResource( 9 )
+anims/Sumindo = SubResource( 10 )
+anims/mexendo = SubResource( 11 )
 
-[node name="OVO-ROSA" type="Sprite" parent="Ovos"]
+[node name="OVO-VERDE" type="Sprite" parent="Ovos"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 80, 152 )
 scale = Vector2( 2.625, 2.625 )
 texture = ExtResource( 31 )
 vframes = 2
 frame = 1
 
-[node name="AnimationOvoRosa" type="AnimationPlayer" parent="Ovos/OVO-ROSA"]
-anims/Aparecendo = SubResource( 16 )
-anims/Sumindo = SubResource( 17 )
-anims/mexendo = SubResource( 10 )
+[node name="AnimationOvoVerde" type="AnimationPlayer" parent="Ovos/OVO-VERDE"]
+anims/Aparecendo = SubResource( 12 )
+anims/Sumindo = SubResource( 13 )
+anims/mexendo = SubResource( 14 )
 
 [node name="planeta" type="Node" parent="."]
 
@@ -543,8 +541,8 @@ texture = ExtResource( 33 )
 hframes = 50
 
 [node name="AnimationPlayerPlaneta" type="AnimationPlayer" parent="planeta/planeta1"]
-anims/RodaRodaJequiti = SubResource( 11 )
-anims/surgindopraneta = SubResource( 12 )
+anims/RodaRodaJequiti = SubResource( 15 )
+anims/surgindopraneta = SubResource( 16 )
 
 [node name="transição" type="Node" parent="."]
 
@@ -559,8 +557,8 @@ __meta__ = {
 
 [node name="AnimacaoTransicao" type="AnimationPlayer" parent="transição/ColorRect"]
 autoplay = "Entrando"
-anims/Entrando = SubResource( 6 )
-anims/Saindo = SubResource( 7 )
+anims/Entrando = SubResource( 17 )
+anims/Saindo = SubResource( 18 )
 
 [connection signal="animation_finished" from="TextBox/TextBoxContainer/AnimationPlayerTxtBox" to="." method="_on_AnimationPlayerTxtBox_animation_finished"]
 [connection signal="tween_all_completed" from="TextBox/Tween" to="." method="_on_Tween_tween_all_completed"]
@@ -568,5 +566,5 @@ anims/Saindo = SubResource( 7 )
 [connection signal="pressed" from="Botoes/TouchDia" to="." method="_on_TouchDia_pressed"]
 [connection signal="pressed" from="Botoes/TouchNoite" to="." method="_on_TouchNoite_pressed"]
 [connection signal="animation_finished" from="Ovos/OVO-BLUE/AnimationOvoAzul" to="." method="_on_AnimationOvoAzul_animation_finished"]
-[connection signal="animation_finished" from="Ovos/OVO-ROSA/AnimationOvoRosa" to="." method="_on_AnimationOvoRosa_animation_finished"]
+[connection signal="animation_finished" from="Ovos/OVO-VERDE/AnimationOvoVerde" to="." method="_on_AnimationOvoRosa_animation_finished"]
 [connection signal="animation_finished" from="transição/ColorRect/AnimacaoTransicao" to="." method="_on_AnimacaoTransicao_animation_finished"]
