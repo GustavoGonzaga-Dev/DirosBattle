@@ -16,9 +16,9 @@ onready var textboxAnimationProximo = $TextBox/Proximo/AnimeProximo
 onready var textboxAnimationPlayer = $TextBox/TextBoxContainer/AnimationPlayerTxtBox
 onready var colorReacAnimacaoTransicao = $"transição/ColorRect/AnimacaoTransicao"
 onready var animationPlayerPlaneta = $planeta/planeta1/AnimationPlayerPlaneta
-onready var animationPlayerBotoes = $Botoes/AnimationPlayerBotoes
-onready var TouchDia = $Botoes/TouchDia
-onready var TouchNoite = $Botoes/TouchNoite
+onready var animationPlayerBotoes = $TextBox/Botoes/AnimationPlayerBotoes
+onready var TouchDia = $TextBox/Botoes/ButtonDia
+onready var TouchNoite = $TextBox/Botoes/ButtonNoite
 
 enum State{
 	READY,
@@ -113,27 +113,9 @@ func _on_AnimacaoTransicao_animation_finished(anim_name):
 		get_tree().change_scene("res://Cenas/HomeDiro.tscn")
 
 func _on_AnimationPlayerTxtBox_animation_finished(anim_name):
+	TouchDia.visible = not TouchDia.visible
+	TouchNoite.visible = not TouchNoite.visible
 	animationPlayerBotoes.play("surgindoBotoes")
-
-func _on_TouchDia_pressed():
-	ovo = "A"
-	TouchDia.visible = not TouchDia.visible
-	TouchNoite.visible = not TouchNoite.visible
-	_on_btn_pressed()
-	_on_btn_pressed()
-	changeState(State.FINISHED)
-	Ovo_Azul.visible = not Ovo_Azul.visible
-	Ovo_Azul_Animation.play("Aparecendo")
-
-func _on_TouchNoite_pressed():
-	ovo = "B"
-	TouchDia.visible = not TouchDia.visible
-	TouchNoite.visible = not TouchNoite.visible
-	_on_btn_pressed()
-	_on_btn_pressed()
-	changeState(State.FINISHED)
-	Ovo_Verde.visible = not Ovo_Verde.visible
-	Ovo_Verde_Animation.play("Aparecendo")
 
 func _on_btn_pressed():
 	bt += 1
@@ -145,3 +127,23 @@ func _on_AnimationOvoAzul_animation_finished(anim_name):
 func _on_AnimationOvoRosa_animation_finished(anim_name):
 	if anim_name == "Aparecendo":
 		Ovo_Verde_Animation.play("mexendo")
+
+func _on_ButtonDia_pressed():
+	ovo = "A"
+	TouchDia.visible = not TouchDia.visible
+	TouchNoite.visible = not TouchNoite.visible
+	_on_btn_pressed()
+	_on_btn_pressed()
+	changeState(State.FINISHED)
+	Ovo_Azul.visible = not Ovo_Azul.visible
+	Ovo_Azul_Animation.play("Aparecendo")
+
+func _on_ButtonNoite_pressed():
+	ovo = "B"
+	TouchDia.visible = not TouchDia.visible
+	TouchNoite.visible = not TouchNoite.visible
+	_on_btn_pressed()
+	_on_btn_pressed()
+	changeState(State.FINISHED)
+	Ovo_Verde.visible = not Ovo_Verde.visible
+	Ovo_Verde_Animation.play("Aparecendo")

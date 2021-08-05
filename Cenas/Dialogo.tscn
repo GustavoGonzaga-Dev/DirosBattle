@@ -73,6 +73,33 @@ tracks/1/keys = {
 "values": [ 0.5 ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "surgindoBotoes"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ButtonDia:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ButtonNoite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="DynamicFont" id=4]
 size = 7
 font_data = ExtResource( 26 )
@@ -92,7 +119,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ) ],
 "loop": true,
@@ -100,40 +127,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 4 ), ExtResource( 25 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "cometa",
 "speed": 5.0
 } ]
-
-[sub_resource type="Animation" id=8]
-resource_name = "surgindoBotoes"
-tracks/0/type = "value"
-tracks/0/path = NodePath("TouchDia:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("TouchNoite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=9]
 resource_name = "Aparecendo"
@@ -376,6 +376,39 @@ anims/subindo = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="TextBox"]
 
+[node name="Botoes" type="Node" parent="TextBox"]
+
+[node name="ButtonDia" type="TextureButton" parent="TextBox/Botoes"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 16.0
+margin_top = 120.0
+margin_right = 72.0
+margin_bottom = 152.0
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 29 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonNoite" type="TextureButton" parent="TextBox/Botoes"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 88.0
+margin_top = 120.0
+margin_right = 144.0
+margin_bottom = 152.0
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 30 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayerBotoes" type="AnimationPlayer" parent="TextBox/Botoes"]
+anims/surgindoBotoes = SubResource( 6 )
+
 [node name="btn" type="TextureButton" parent="TextBox"]
 margin_left = 48.0
 margin_top = 208.0
@@ -421,9 +454,9 @@ script = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer6"]
 position = Vector2( 93.8347, 30.3186 )
 scale = Vector2( 0.348061, 0.331229 )
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 animation = "estrelas"
-frame = 5
+frame = 4
 playing = true
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
@@ -435,9 +468,9 @@ script = ExtResource( 3 )
 position = Vector2( 58.6547, 9.39308 )
 rotation = 0.364774
 scale = Vector2( 0.312126, 0.386383 )
-frames = SubResource( 7 )
+frames = SubResource( 8 )
 animation = "cometa"
-frame = 1
+frame = 4
 playing = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
@@ -484,25 +517,6 @@ position = Vector2( 6.25238, 73.1681 )
 scale = Vector2( 1.01474, 1.18695 )
 texture = ExtResource( 9 )
 centered = false
-
-[node name="Botoes" type="Node" parent="."]
-
-[node name="TouchDia" type="TouchScreenButton" parent="Botoes"]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 16, 120 )
-scale = Vector2( 0.432433, 0.432433 )
-normal = ExtResource( 29 )
-pressed = ExtResource( 29 )
-
-[node name="TouchNoite" type="TouchScreenButton" parent="Botoes"]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 80, 120 )
-scale = Vector2( 0.466216, 0.466216 )
-normal = ExtResource( 30 )
-pressed = ExtResource( 30 )
-
-[node name="AnimationPlayerBotoes" type="AnimationPlayer" parent="Botoes"]
-anims/surgindoBotoes = SubResource( 8 )
 
 [node name="Ovos" type="Node" parent="."]
 
@@ -562,9 +576,9 @@ anims/Saindo = SubResource( 18 )
 
 [connection signal="animation_finished" from="TextBox/TextBoxContainer/AnimationPlayerTxtBox" to="." method="_on_AnimationPlayerTxtBox_animation_finished"]
 [connection signal="tween_all_completed" from="TextBox/Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="pressed" from="TextBox/Botoes/ButtonDia" to="." method="_on_ButtonDia_pressed"]
+[connection signal="pressed" from="TextBox/Botoes/ButtonNoite" to="." method="_on_ButtonNoite_pressed"]
 [connection signal="pressed" from="TextBox/btn" to="." method="_on_btn_pressed"]
-[connection signal="pressed" from="Botoes/TouchDia" to="." method="_on_TouchDia_pressed"]
-[connection signal="pressed" from="Botoes/TouchNoite" to="." method="_on_TouchNoite_pressed"]
 [connection signal="animation_finished" from="Ovos/OVO-BLUE/AnimationOvoAzul" to="." method="_on_AnimationOvoAzul_animation_finished"]
 [connection signal="animation_finished" from="Ovos/OVO-VERDE/AnimationOvoVerde" to="." method="_on_AnimationOvoRosa_animation_finished"]
 [connection signal="animation_finished" from="transição/ColorRect/AnimacaoTransicao" to="." method="_on_AnimacaoTransicao_animation_finished"]
