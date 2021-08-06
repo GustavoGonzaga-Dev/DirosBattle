@@ -5,8 +5,7 @@ func _ready():
 
 func _on_AnimacaoTransicao_animation_finished(anim_name):
 	if anim_name == "Entrando":
-		$Fome.Tempo()
-		$Sede.Tempo()
+		$Estatus.IniciarTudo()
 	elif anim_name == "Saindo":
 		pass
 
