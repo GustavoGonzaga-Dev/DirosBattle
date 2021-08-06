@@ -7,6 +7,10 @@ func _ready():
 
 func _on_AnimacaoTransicao_animation_finished(anim_name):
 	if anim_name == "Entrando":
-		pass
+		$Fome.Tempo()
 	elif anim_name == "Saindo":
 		pass
+
+
+func _on_TimerFome_timeout():
+	pass # Replace with function body.

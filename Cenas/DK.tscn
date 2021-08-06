@@ -57,15 +57,15 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 51 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 14 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 15 ), ExtResource( 4 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "dk",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": false,
 "name": "paradoDk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 14 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 15 ), ExtResource( 4 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "dk",
+"speed": 10.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
