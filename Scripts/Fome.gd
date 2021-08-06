@@ -2,30 +2,17 @@ extends Node
 
 var Fome = 0
 var Triste = 0
-#var tempoRestante
-#var a = true
-
-#func _ready():
-	#while(a == true): Tempo()
-	#Tempo()
-	
-	
 
 func Tempo():
 	Animar()
 	$TimerFome.start()
-	
-	#while a == true:
-		#tempoRestante = $TimerFome.get_wait_time()
-		#print(tempoRestante)
-		
-			
 
 func ToCuFome():
 	if Fome >= 6:
 		Triste +=1
 	Fome +=1
 	print("To com fome")
+	$TimerFome.start()
 	Animar()
 
 func Comer():
@@ -59,9 +46,6 @@ func Animar():
 			$TimerFome.stop()
 			print("<-------MORREU------->")
 
-
 func _on_TimerFome_timeout():
-	ToCuFome()
 	$TimerFome.stop()
-	$TimerFome.start()
-	#print("<--------------> ACABOU!")
+	ToCuFome()
