@@ -290,25 +290,25 @@ texture = ExtResource( 20 )
 centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
-position = Vector2( 0, 35.6359 )
-motion_mirroring = Vector2( 150, 70 )
+position = Vector2( -56.1231, -2.52781 )
+motion_mirroring = Vector2( 150, 130 )
 script = ExtResource( 23 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer6"]
-position = Vector2( 93.8347, 30.3186 )
-scale = Vector2( 0.348061, 0.331229 )
+position = Vector2( 108.598, 93.702 )
+scale = Vector2( 0.366671, 0.414863 )
 frames = SubResource( 1 )
 animation = "estrelas"
-frame = 2
+frame = 10
 playing = true
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
 position = Vector2( 32, 41.6359 )
-motion_mirroring = Vector2( 150, 0 )
+motion_mirroring = Vector2( 170, 0 )
 script = ExtResource( 23 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer7"]
-position = Vector2( 58.6547, 9.39308 )
+position = Vector2( 87.1225, 31.8677 )
 rotation = 0.364774
 scale = Vector2( 0.312126, 0.386383 )
 frames = SubResource( 2 )
@@ -317,11 +317,32 @@ frame = 6
 playing = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
-position = Vector2( 0, 35.6359 )
+position = Vector2( -39.2862, 107.473 )
 motion_mirroring = Vector2( 300, 70 )
 script = ExtResource( 23 )
 
 [node name="Sprite" type="Sprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer2"]
+scale = Vector2( 1.15451, 1.38178 )
+texture = ExtResource( 21 )
+centered = false
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
+position = Vector2( -42.6535, 151.249 )
+motion_mirroring = Vector2( 300, 70 )
+script = ExtResource( 23 )
+
+[node name="Sprite" type="Sprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer8"]
+scale = Vector2( 1.15451, 1.38178 )
+texture = ExtResource( 21 )
+centered = false
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
+position = Vector2( -30.4056, 145.237 )
+motion_mirroring = Vector2( 300, 70 )
+script = ExtResource( 23 )
+
+[node name="Sprite" type="Sprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer9"]
+position = Vector2( -6.74239, -74.1662 )
 scale = Vector2( 1.15451, 1.38178 )
 texture = ExtResource( 21 )
 centered = false
@@ -351,7 +372,7 @@ centered = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
 position = Vector2( -6, 73.1359 )
-motion_mirroring = Vector2( 300, 50 )
+motion_mirroring = Vector2( 300, 130 )
 script = ExtResource( 22 )
 
 [node name="Sprite" type="Sprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer5"]
