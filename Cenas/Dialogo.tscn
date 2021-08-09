@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Scripts/ParallaxLayerEstrela3.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ParallaxLayerEstrela.gd" type="Script" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://Img/Ovos/OVO-BLUE.png" type="Texture" id=32]
 [ext_resource path="res://Img/planetas/praneta3.png" type="Texture" id=33]
 [ext_resource path="res://Img/Rosto-Bigode/Glass-Mustache.png" type="Texture" id=34]
+[ext_resource path="res://Fontes/Retro Gaming.ttf" type="DynamicFontData" id=35]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -61,7 +62,7 @@ border_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 6
-font_data = ExtResource( 26 )
+font_data = ExtResource( 35 )
 
 [sub_resource type="Animation" id=5]
 tracks/0/type = "value"
@@ -298,7 +299,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=19]
 resource_name = "Apaga"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -313,8 +314,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=19]
-resource_name = "Rosto_movendo"
+[sub_resource type="Animation" id=20]
 length = 2.54
 loop = true
 tracks/0/type = "value"
@@ -352,7 +352,7 @@ position = Vector2( -12.3557, 31.8636 )
 scale = Vector2( 0.331511, 0.375009 )
 frames = SubResource( 1 )
 animation = "estrelas"
-frame = 10
+frame = 9
 playing = true
 centered = false
 
@@ -367,7 +367,7 @@ rotation = 0.364774
 scale = Vector2( 0.319046, 0.386383 )
 frames = SubResource( 2 )
 animation = "cometa"
-frame = 6
+frame = 1
 playing = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Fundo/ParallaxBackground"]
@@ -489,17 +489,17 @@ margin_right = 136.0
 margin_bottom = 20.0
 
 [node name="Start" type="Label" parent="TextBox/TextBoxContainer/MarginContainer/HBoxContainer"]
-margin_right = 6.0
-margin_bottom = 16.0
+margin_right = 5.0
+margin_bottom = 8.0
 rect_min_size = Vector2( 5, 0 )
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 4 )
 text = "*"
 
 [node name="Label" type="Label" parent="TextBox/TextBoxContainer/MarginContainer/HBoxContainer"]
-margin_left = 10.0
+margin_left = 9.0
 margin_right = 120.0
-margin_bottom = 16.0
+margin_bottom = 8.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
 custom_fonts/font = SubResource( 4 )
@@ -508,6 +508,7 @@ autowrap = true
 
 [node name="End" type="Label" parent="TextBox/TextBoxContainer/MarginContainer/HBoxContainer"]
 margin_left = 124.0
+margin_top = 8.0
 margin_right = 132.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 8, 0 )
@@ -623,7 +624,7 @@ anims/surgindopraneta = SubResource( 16 )
 [node name="ColorRect" type="ColorRect" parent="transição"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -645,8 +646,8 @@ hframes = 2
 vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rosto-do-Criador/Bigode"]
-anims/Apaga = SubResource( 21 )
-anims/Rosto_movendo = SubResource( 19 )
+anims/Apaga = SubResource( 19 )
+anims/Rosto_movendo = SubResource( 20 )
 
 [connection signal="animation_finished" from="TextBox/TextBoxContainer/AnimationPlayerTxtBox" to="." method="_on_AnimationPlayerTxtBox_animation_finished"]
 [connection signal="tween_all_completed" from="TextBox/Tween" to="." method="_on_Tween_tween_all_completed"]
