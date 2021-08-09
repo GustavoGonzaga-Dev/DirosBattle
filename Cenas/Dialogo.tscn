@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Scripts/ParallaxLayerEstrela3.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ParallaxLayerEstrela.gd" type="Script" id=2]
@@ -33,8 +33,25 @@
 [ext_resource path="res://Img/Ovos/OVO-VERDE.png" type="Texture" id=31]
 [ext_resource path="res://Img/Ovos/OVO-BLUE.png" type="Texture" id=32]
 [ext_resource path="res://Img/planetas/praneta3.png" type="Texture" id=33]
+[ext_resource path="res://Img/Rosto-Bigode/Glass-Mustache.png" type="Texture" id=34]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "estrelas",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 4 ), ExtResource( 25 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "cometa",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0, 0, 0, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -42,12 +59,11 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 6
 font_data = ExtResource( 26 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "subindo"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:anchor_top")
 tracks/0/interp = 1
@@ -74,7 +90,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-resource_name = "surgindoBotoes"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ButtonDia:modulate")
 tracks/0/interp = 1
@@ -100,12 +115,11 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=7]
 size = 7
 font_data = ExtResource( 26 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "Sumindo"
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -118,22 +132,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "estrelas",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 4 ), ExtResource( 25 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "cometa",
-"speed": 5.0
-} ]
 
 [sub_resource type="Animation" id=9]
 resource_name = "Aparecendo"
@@ -300,8 +298,154 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
+[sub_resource type="Animation" id=21]
+resource_name = "Apaga"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.04 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "Rosto_movendo"
+length = 2.54
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 2, 3, 4 ]
+}
+
 [node name="Dialogo" type="Node2D"]
 script = ExtResource( 27 )
+
+[node name="Fundo" type="Node" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Fundo"]
+
+[node name="Sprite" type="Sprite" parent="Fundo/ParallaxBackground"]
+scale = Vector2( 1.02188, 1 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Fundo/ParallaxBackground"]
+position = Vector2( -9.52438, -26.2727 )
+motion_mirroring = Vector2( 150, 130 )
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Fundo/ParallaxBackground/ParallaxLayer6"]
+position = Vector2( -12.3557, 31.8636 )
+scale = Vector2( 0.331511, 0.375009 )
+frames = SubResource( 1 )
+animation = "estrelas"
+frame = 10
+playing = true
+centered = false
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="Fundo/ParallaxBackground"]
+position = Vector2( 32, 41.6359 )
+motion_mirroring = Vector2( 150, 0 )
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Fundo/ParallaxBackground/ParallaxLayer7"]
+position = Vector2( 60.4002, 10.0596 )
+rotation = 0.364774
+scale = Vector2( 0.319046, 0.386383 )
+frames = SubResource( 2 )
+animation = "cometa"
+frame = 6
+playing = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Fundo/ParallaxBackground"]
+position = Vector2( 13.4929, 39.6044 )
+motion_mirroring = Vector2( 300, 120 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Fundo/ParallaxBackground/ParallaxLayer2"]
+scale = Vector2( 1.15451, 1.38178 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="Fundo/ParallaxBackground"]
+position = Vector2( -5.4299, 99.5667 )
+motion_mirroring = Vector2( 300, 120 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Fundo/ParallaxBackground/ParallaxLayer8"]
+scale = Vector2( 1.15451, 1.38178 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="Fundo/ParallaxBackground"]
+position = Vector2( -5.4299, 99.5667 )
+motion_mirroring = Vector2( 300, 120 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Fundo/ParallaxBackground/ParallaxLayer9"]
+scale = Vector2( 1.15451, 1.38178 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Fundo/ParallaxBackground"]
+modulate = Color( 0.592157, 0, 1, 1 )
+position = Vector2( -62.4435, 43.9012 )
+motion_mirroring = Vector2( 300, 70 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Fundo/ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 6.7818, 40.7818 )
+scale = Vector2( 0.91873, 0.777368 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="Fundo/ParallaxBackground"]
+modulate = Color( 0.592157, 0, 1, 1 )
+position = Vector2( -62.4435, 43.9012 )
+motion_mirroring = Vector2( 300, 70 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Fundo/ParallaxBackground/ParallaxLayer10"]
+position = Vector2( 6.7818, 40.7818 )
+scale = Vector2( 0.91873, 0.777368 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Fundo/ParallaxBackground"]
+position = Vector2( -10.7622, 10.4336 )
+motion_mirroring = Vector2( 300, 120 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Fundo/ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 7.14328, 12.587 )
+scale = Vector2( 1.01195, 1.12699 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Fundo/ParallaxBackground"]
+position = Vector2( -9.96848, 65.1989 )
+motion_mirroring = Vector2( 300, 50 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Fundo/ParallaxBackground/ParallaxLayer5"]
+modulate = Color( 0.843137, 0.572549, 0.572549, 1 )
+position = Vector2( 6.25238, 73.1681 )
+scale = Vector2( 1.01474, 1.18695 )
+texture = ExtResource( 9 )
+centered = false
 
 [node name="TextBox" type="CanvasLayer" parent="."]
 
@@ -321,7 +465,7 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="TextBox/TextBoxContainer"]
 margin_right = 140.0
 margin_bottom = 24.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="TextBox/TextBoxContainer"]
 margin_right = 140.0
@@ -349,7 +493,7 @@ margin_right = 6.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 5, 0 )
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "*"
 
 [node name="Label" type="Label" parent="TextBox/TextBoxContainer/MarginContainer/HBoxContainer"]
@@ -358,7 +502,7 @@ margin_right = 120.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "Text! "
 autowrap = true
 
@@ -368,11 +512,11 @@ margin_right = 132.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 8, 0 )
 size_flags_vertical = 8
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "v"
 
 [node name="AnimationPlayerTxtBox" type="AnimationPlayer" parent="TextBox/TextBoxContainer"]
-anims/subindo = SubResource( 3 )
+anims/subindo = SubResource( 5 )
 
 [node name="Tween" type="Tween" parent="TextBox"]
 
@@ -426,97 +570,14 @@ margin_left = 56.0
 margin_top = 232.0
 margin_right = 102.0
 margin_bottom = 251.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 7 )
 text = "Proximo"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimeProximo" type="AnimationPlayer" parent="TextBox/Proximo"]
-anims/Sumindo = SubResource( 5 )
-
-[node name="Fundo" type="Node" parent="."]
-
-[node name="fundo" type="Node" parent="Fundo"]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Fundo/fundo"]
-
-[node name="Sprite" type="Sprite" parent="Fundo/fundo/ParallaxBackground"]
-scale = Vector2( 1.02188, 1 )
-texture = ExtResource( 10 )
-centered = false
-
-[node name="ParallaxLayer6" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
-position = Vector2( 0, 35.6359 )
-motion_mirroring = Vector2( 150, 70 )
-script = ExtResource( 3 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer6"]
-position = Vector2( 93.8347, 30.3186 )
-scale = Vector2( 0.348061, 0.331229 )
-frames = SubResource( 7 )
-animation = "estrelas"
-frame = 4
-playing = true
-
-[node name="ParallaxLayer7" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
-position = Vector2( 32, 41.6359 )
-motion_mirroring = Vector2( 150, 0 )
-script = ExtResource( 3 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer7"]
-position = Vector2( 58.6547, 9.39308 )
-rotation = 0.364774
-scale = Vector2( 0.312126, 0.386383 )
-frames = SubResource( 8 )
-animation = "cometa"
-frame = 4
-playing = true
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
-position = Vector2( 0, 35.6359 )
-motion_mirroring = Vector2( 300, 70 )
-script = ExtResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer2"]
-scale = Vector2( 1.15451, 1.38178 )
-texture = ExtResource( 9 )
-centered = false
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
-modulate = Color( 0.592157, 0, 1, 1 )
-position = Vector2( -62.4435, 43.9012 )
-motion_mirroring = Vector2( 300, 70 )
-script = ExtResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer3"]
-position = Vector2( 6.7818, 40.7818 )
-scale = Vector2( 0.91873, 0.777368 )
-texture = ExtResource( 9 )
-centered = false
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
-position = Vector2( -6, 73.1359 )
-motion_mirroring = Vector2( 300, 50 )
-script = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer4"]
-position = Vector2( 7.14328, 12.587 )
-scale = Vector2( 1.01195, 1.12699 )
-texture = ExtResource( 9 )
-centered = false
-
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
-position = Vector2( -6, 73.1359 )
-motion_mirroring = Vector2( 300, 50 )
-script = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Fundo/fundo/ParallaxBackground/ParallaxLayer5"]
-modulate = Color( 0.843137, 0.572549, 0.572549, 1 )
-position = Vector2( 6.25238, 73.1681 )
-scale = Vector2( 1.01474, 1.18695 )
-texture = ExtResource( 9 )
-centered = false
+anims/Sumindo = SubResource( 8 )
 
 [node name="Ovos" type="Node" parent="."]
 
@@ -534,7 +595,6 @@ anims/mexendo = SubResource( 11 )
 
 [node name="OVO-VERDE" type="Sprite" parent="Ovos"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 80, 152 )
 scale = Vector2( 2.625, 2.625 )
 texture = ExtResource( 31 )
@@ -563,7 +623,7 @@ anims/surgindopraneta = SubResource( 16 )
 [node name="ColorRect" type="ColorRect" parent="transição"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -573,6 +633,20 @@ __meta__ = {
 autoplay = "Entrando"
 anims/Entrando = SubResource( 17 )
 anims/Saindo = SubResource( 18 )
+
+[node name="Rosto-do-Criador" type="Node" parent="."]
+
+[node name="Bigode" type="Sprite" parent="Rosto-do-Criador"]
+light_mask = 0
+position = Vector2( 82.5894, 124.395 )
+scale = Vector2( 3.25991, 2.9183 )
+texture = ExtResource( 34 )
+hframes = 2
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rosto-do-Criador/Bigode"]
+anims/Apaga = SubResource( 21 )
+anims/Rosto_movendo = SubResource( 19 )
 
 [connection signal="animation_finished" from="TextBox/TextBoxContainer/AnimationPlayerTxtBox" to="." method="_on_AnimationPlayerTxtBox_animation_finished"]
 [connection signal="tween_all_completed" from="TextBox/Tween" to="." method="_on_Tween_tween_all_completed"]

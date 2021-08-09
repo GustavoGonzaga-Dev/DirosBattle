@@ -19,6 +19,8 @@ onready var animationPlayerPlaneta = $planeta/planeta1/AnimationPlayerPlaneta
 onready var animationPlayerBotoes = $TextBox/Botoes/AnimationPlayerBotoes
 onready var TouchDia = $TextBox/Botoes/ButtonDia
 onready var TouchNoite = $TextBox/Botoes/ButtonNoite
+onready var Rosto_Movendo = $"Rosto-do-Criador/Bigode/AnimationPlayer"
+
 
 enum State{
 	READY,
@@ -108,7 +110,9 @@ func changeState(nextState):
 
 func _on_AnimacaoTransicao_animation_finished(anim_name):
 	if anim_name == "Entrando":
+		Rosto_Movendo.play("Rosto_movendo")
 		animationPlayerPlaneta.play("RodaRodaJequiti")
+
 	elif anim_name == "Saindo":
 		get_tree().change_scene("res://Cenas/HomeDiro.tscn")
 
@@ -116,6 +120,8 @@ func _on_AnimationPlayerTxtBox_animation_finished(anim_name):
 	TouchDia.visible = not TouchDia.visible
 	TouchNoite.visible = not TouchNoite.visible
 	animationPlayerBotoes.play("surgindoBotoes")
+	Rosto_Movendo.play("Apaga")
+
 
 func _on_btn_pressed():
 	bt += 1
@@ -123,6 +129,7 @@ func _on_btn_pressed():
 func _on_AnimationOvoAzul_animation_finished(anim_name):
 	if anim_name == "Aparecendo":
 		Ovo_Azul_Animation.play("mexendo")
+
 
 func _on_AnimationOvoRosa_animation_finished(anim_name):
 	if anim_name == "Aparecendo":
