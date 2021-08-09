@@ -33,7 +33,7 @@
 [ext_resource path="res://Img/Ovos/OVO-VERDE.png" type="Texture" id=31]
 [ext_resource path="res://Img/Ovos/OVO-BLUE.png" type="Texture" id=32]
 [ext_resource path="res://Img/planetas/praneta3.png" type="Texture" id=33]
-[ext_resource path="res://Img/Rosto-Bigode/Glass-Mustache.png" type="Texture" id=34]
+[ext_resource path="res://Img/Rosto-Bigode/Glass-Mustache-branco.png" type="Texture" id=34]
 [ext_resource path="res://Fontes/Retro Gaming.ttf" type="DynamicFontData" id=35]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -352,7 +352,7 @@ position = Vector2( -12.3557, 31.8636 )
 scale = Vector2( 0.331511, 0.375009 )
 frames = SubResource( 1 )
 animation = "estrelas"
-frame = 9
+frame = 6
 playing = true
 centered = false
 
@@ -367,7 +367,7 @@ rotation = 0.364774
 scale = Vector2( 0.319046, 0.386383 )
 frames = SubResource( 2 )
 animation = "cometa"
-frame = 1
+frame = 2
 playing = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Fundo/ParallaxBackground"]
@@ -464,12 +464,12 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="TextBox/TextBoxContainer"]
 margin_right = 140.0
-margin_bottom = 24.0
+margin_bottom = 16.0
 custom_styles/panel = SubResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="TextBox/TextBoxContainer"]
 margin_right = 140.0
-margin_bottom = 24.0
+margin_bottom = 16.0
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
 custom_constants/margin_left = 4
@@ -480,13 +480,13 @@ visible = false
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 136.0
-margin_bottom = 20.0
+margin_bottom = 12.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextBox/TextBoxContainer/MarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 136.0
-margin_bottom = 20.0
+margin_bottom = 12.0
 
 [node name="Start" type="Label" parent="TextBox/TextBoxContainer/MarginContainer/HBoxContainer"]
 margin_right = 5.0
@@ -508,9 +508,8 @@ autowrap = true
 
 [node name="End" type="Label" parent="TextBox/TextBoxContainer/MarginContainer/HBoxContainer"]
 margin_left = 124.0
-margin_top = 8.0
 margin_right = 132.0
-margin_bottom = 16.0
+margin_bottom = 8.0
 rect_min_size = Vector2( 8, 0 )
 size_flags_vertical = 8
 custom_fonts/font = SubResource( 4 )
