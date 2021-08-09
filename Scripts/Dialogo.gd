@@ -114,7 +114,10 @@ func _on_AnimacaoTransicao_animation_finished(anim_name):
 		animationPlayerPlaneta.play("RodaRodaJequiti")
 
 	elif anim_name == "Saindo":
-		get_tree().change_scene("res://Cenas/HomeDiro.tscn")
+		if ovo == "A":
+			get_tree().change_scene("res://Cenas/HomeDiro.tscn")
+		elif ovo == "B":
+			get_tree().change_scene("res://Cenas/HomeDiro2.tscn")
 
 func _on_AnimationPlayerTxtBox_animation_finished(anim_name):
 	TouchDia.visible = not TouchDia.visible
