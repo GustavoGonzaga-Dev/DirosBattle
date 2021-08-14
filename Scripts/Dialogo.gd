@@ -21,6 +21,12 @@ onready var TouchDia = $TextBox/Botoes/ButtonDia
 onready var TouchNoite = $TextBox/Botoes/ButtonNoite
 onready var Rosto_Movendo = $"Rosto-do-Criador/Bigode/AnimationPlayer"
 
+var saveData = {
+	
+}
+
+# path string
+var saveGameFileName: String = "res://ArquivosBanco/informacoesDiro.txt"
 
 enum State{
 	READY,
@@ -46,6 +52,16 @@ func _ready():
 	FtextQueue("O que você Prefere?")
 	FtextQueue("Muito bom, aqui está o seu OVODIRO...")
 	FtextQueue("CUIDE MUITO BEM DELE.")
+
+func saveData() -> void:
+	#self.editData()
+	
+	var saveFile = File.new()
+	saveFile.open(saveGameFileName, File.WRITE)
+
+	# bread and butter
+	saveFile.store_line(to_json(saveData))
+	saveFile.close()
 
 func _process(delta):
 	match stadoAtual:
@@ -114,10 +130,7 @@ func _on_AnimacaoTransicao_animation_finished(anim_name):
 		animationPlayerPlaneta.play("RodaRodaJequiti")
 
 	elif anim_name == "Saindo":
-		if ovo == "A":
-			get_tree().change_scene("res://Cenas/HomeDiro.tscn")
-		elif ovo == "B":
-			get_tree().change_scene("res://Cenas/HomeDiro2.tscn")
+		get_tree().change_scene("res://Cenas/HomeDiro.tscn")
 
 func _on_AnimationPlayerTxtBox_animation_finished(anim_name):
 	TouchDia.visible = not TouchDia.visible
@@ -139,6 +152,10 @@ func _on_AnimationOvoRosa_animation_finished(anim_name):
 		Ovo_Verde_Animation.play("mexendo")
 
 func _on_ButtonDia_pressed():
+	saveData = {
+		"ovoEscolhido" : "A"
+	}
+	saveData()
 	ovo = "A"
 	TouchDia.visible = not TouchDia.visible
 	TouchNoite.visible = not TouchNoite.visible
@@ -149,6 +166,10 @@ func _on_ButtonDia_pressed():
 	Ovo_Azul_Animation.play("Aparecendo")
 
 func _on_ButtonNoite_pressed():
+	saveData = {
+		"ovoEscolhido" : "B"
+	}
+	saveData()
 	ovo = "B"
 	TouchDia.visible = not TouchDia.visible
 	TouchNoite.visible = not TouchNoite.visible
