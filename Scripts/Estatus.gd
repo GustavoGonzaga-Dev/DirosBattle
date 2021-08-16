@@ -3,6 +3,11 @@ extends Node2D
 var Fome = 0
 var Sede = 0
 var Triste = 0
+var lv = 0
+var lvTxt = "LV. %d"
+
+onready var lblLv = $"LabelLV"
+
 
 func IniciarTudo():
 	Tempo()
@@ -12,7 +17,12 @@ func Tempo():
 	$TimerFome.start()
 	$TimerSede.start()
 
+func nextLvl():
+	lblLv.text = lvTxt % lv
+
+
 func atualizarAnimacao():
+	nextLvl()
 	AnimarEmocao()
 	AnimarFome()
 	AnimarSede()
@@ -29,6 +39,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_down"):
 		print("OBRIGADO POR CONVERSAR COMIGO.")
 		Triste -=1
+		atualizarAnimacao()
+	if Input.is_action_just_pressed("ui_lv"):
+		lv +=1
 		atualizarAnimacao()
 	
 func DiminuirFelicidade():

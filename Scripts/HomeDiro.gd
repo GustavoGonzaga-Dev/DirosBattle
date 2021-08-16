@@ -5,9 +5,6 @@ var saveData = {
 }
 
 var resposta
-
-var nodeData
-# path string
 var saveGameFileName: String = "res://ArquivosBanco/informacoesDiro.txt"
 
 func _ready():
@@ -15,42 +12,33 @@ func _ready():
 	
 func loadData() -> void:
 	var dataFile = File.new()
-	
-	# make sure our file exists on users system
 	if not dataFile.file_exists(saveGameFileName):
-		return # File does not exist
-	
-	# allow reading only for file
+		return 
 	dataFile.open(saveGameFileName, File.READ)
-	# loop through file line by line
 	while dataFile.get_position() < dataFile.get_len():
-		#resposta = dataFile.get_line()
-		nodeData = parse_json(dataFile.get_line())
-		
-		# grab save data
+		var nodeData = parse_json(dataFile.get_line())
 		saveData.ovoEscolhido = nodeData["ovoEscolhido"]
-
-		#print(resposta)
-		#saveData.location = nodeData["location"]
 	dataFile.close()
 
 func _on_AnimacaoTransicao_animation_finished(anim_name):
 	resposta = saveData.values()
-	#print(resposta)
 	if anim_name == "Entrando":
 		$Estatus/AnimationPlayer.play("aparecendo")
 		if resposta.front() == "A":
-			$"Ovos/OVO-BLUE/AnimationOvoAzul".play("Aparecendo")
+			#$"Ovos/OVO-BLUE".visible = not $"Ovos/OVO-BLUE".visible
+			$"Ovos/animacaoDiro".play("AparecendoOvoDia")
 		elif resposta.front() == "B":
-			$"Ovos/OVO-VERDE/AnimationOvoVerde".play("Aparecendo")
+			#$"Ovos/OVO-VERDE".visible = not $"Ovos/OVO-VERDE".visible
+			$"Ovos/animacaoDiro".play("AparecendoOvoNoite")
 	elif anim_name == "Saindo":
 		pass
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$Estatus.IniciarTudo()
 
-func _on_AnimationOvoAzul_animation_finished(anim_name):
-	$"Ovos/OVO-BLUE/AnimationOvoAzul".play("mexendo")
-
-func _on_AnimationOvoVerde_animation_finished(anim_name):
-	$"Ovos/OVO-VERDE/AnimationOvoVerde".play("mexendo")
+func _on_animacaoDiro_animation_finished(anim_name):
+	match anim_name:
+		"AparecendoOvoDia":
+			$"Ovos/animacaoDiro".play("MexendoOvoDia")
+		"AparecendoOvoNoite":
+			$"Ovos/animacaoDiro".play("MexendoOvoNoite")

@@ -52,8 +52,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
+resource_name = "AparecendoOvoDia"
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("OVO-BLUE:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -66,8 +67,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
+resource_name = "AparecendoOvoNoite"
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("OVO-VERDE:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -76,14 +78,15 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=6]
+resource_name = "MexendoOvoDia"
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("OVO-BLUE:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -96,40 +99,11 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "Aparecendo"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=8]
-resource_name = "Sumindo"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="Animation" id=9]
+resource_name = "MexendoOvoNoite"
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("OVO-VERDE:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -141,18 +115,25 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "QuebrandoOvoDia"
+
+[sub_resource type="Animation" id=9]
+resource_name = "QuebrandoOvoNoite"
+
 [node name="HomeDiro" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 160.0
 margin_bottom = 288.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.796078, 0.54902, 0.960784, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RostoFundo" type="Sprite" parent="."]
+visible = false
 position = Vector2( 80, 160 )
 texture = ExtResource( 1 )
 
@@ -188,25 +169,21 @@ scale = Vector2( 2.625, 2.625 )
 texture = ExtResource( 4 )
 vframes = 2
 
-[node name="AnimationOvoAzul" type="AnimationPlayer" parent="Ovos/OVO-BLUE"]
-anims/Aparecendo = SubResource( 4 )
-anims/Sumindo = SubResource( 5 )
-anims/mexendo = SubResource( 6 )
-
 [node name="OVO-VERDE" type="Sprite" parent="Ovos"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 80, 152 )
 scale = Vector2( 2.625, 2.625 )
 texture = ExtResource( 5 )
 vframes = 2
-frame = 1
 
-[node name="AnimationOvoVerde" type="AnimationPlayer" parent="Ovos/OVO-VERDE"]
-anims/Aparecendo = SubResource( 7 )
-anims/Sumindo = SubResource( 8 )
-anims/mexendo = SubResource( 9 )
+[node name="animacaoDiro" type="AnimationPlayer" parent="Ovos"]
+anims/AparecendoOvoDia = SubResource( 4 )
+anims/AparecendoOvoNoite = SubResource( 5 )
+anims/MexendoOvoDia = SubResource( 6 )
+anims/MexendoOvoNoite = SubResource( 7 )
+anims/QuebrandoOvoDia = SubResource( 8 )
+anims/QuebrandoOvoNoite = SubResource( 9 )
 
 [connection signal="animation_finished" from="transição/ColorRect/AnimacaoTransicao" to="." method="_on_AnimacaoTransicao_animation_finished"]
 [connection signal="animation_finished" from="Estatus/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="animation_finished" from="Ovos/OVO-BLUE/AnimationOvoAzul" to="." method="_on_AnimationOvoAzul_animation_finished"]
-[connection signal="animation_finished" from="Ovos/OVO-VERDE/AnimationOvoVerde" to="." method="_on_AnimationOvoVerde_animation_finished"]
+[connection signal="animation_finished" from="Ovos/animacaoDiro" to="." method="_on_animacaoDiro_animation_finished"]
