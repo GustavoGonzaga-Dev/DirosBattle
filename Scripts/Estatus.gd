@@ -8,8 +8,66 @@ var lvTxt = "LV. %d"
 
 onready var lblLv = $"LabelLV"
 
+var saveData = {
+	
+}
+
+var resposta
+var saveGameFileName: String = "res://ArquivosBanco/informacoesDiro.txt"
+
+#func _ready():
+	
+	
+func saveData() -> void:
+	var saveFile = File.new()
+	saveFile.open(saveGameFileName, File.WRITE)
+	saveFile.store_line(to_json(saveData))
+	saveFile.close()
+	
+func loadData() -> void:
+	var dataFile = File.new()
+	if not dataFile.file_exists(saveGameFileName):
+		return 
+	dataFile.open(saveGameFileName, File.READ)
+	while dataFile.get_position() < dataFile.get_len():
+		var nodeData = parse_json(dataFile.get_line())
+		saveData.ovoEscolhido = nodeData["ovoEscolhido"]
+		saveData.Fome = nodeData["Fome"]
+		saveData.Sede = nodeData["Sede"]
+		saveData.Triste = nodeData["Triste"]
+		saveData.lv = nodeData["lv"]
+	dataFile.close()
+
+func getFome():
+	return Fome
+
+func getSede():
+	return Sede
+
+func getTriste():
+	return Triste
+
+func getNivel():
+	return lv
+
+func setFome(saveData):
+	Fome = saveData.get("Fome")
+
+func setSede(saveData):
+	Sede = saveData.get("Sede")
+
+func setTriste(saveData):
+	Triste = saveData.get("Triste")
+
+func setNivel(saveData):
+	lv = saveData.get("lv")
 
 func IniciarTudo():
+	loadData()
+	setFome(saveData)
+	setSede(saveData)
+	setTriste(saveData)
+	setNivel(saveData)
 	Tempo()
 	atualizarAnimacao()
 	
@@ -66,7 +124,7 @@ func Beber():
 		Sede -=1
 
 func ToCuSede():
-	if Sede >= 4:
+	if Sede >= 40:
 		DiminuirFelicidade()
 	Sede +=1
 	print("To com sede")
@@ -74,7 +132,7 @@ func ToCuSede():
 	atualizarAnimacao()
 
 func ToCuFome():
-	if Fome >= 4:
+	if Fome >= 40:
 		DiminuirFelicidade()
 	Fome +=1
 	print("To com fome")
@@ -91,23 +149,23 @@ func _on_TimerFome_timeout():
 
 func AnimarSede():
 	match Sede:
-		0:
+		0.0:
 			$"Agua-status/AnimationSede".play("1")
-		1:
+		10.0:
 			$"Agua-status/AnimationSede".play("2")
-		2:
+		20.0:
 			$"Agua-status/AnimationSede".play("3")
-		3:
+		30.0:
 			$"Agua-status/AnimationSede".play("4")
-		4:
+		40.0:
 			$"Agua-status/AnimationSede".play("5")
-		5:
+		50.0:
 			$"Agua-status/AnimationSede".play("6")
-		6:
+		60.0:
 			$"Agua-status/AnimationSede".play("7")
-		7:
+		70.0:
 			$"Agua-status/AnimationSede".play("8")
-		8:
+		80.0:
 			$"Agua-status/AnimationSede".stop()
 			$TimerSede.stop()
 			$"Emocoes-Diro/AnimationPlayer".play("Morri")
@@ -115,23 +173,23 @@ func AnimarSede():
 
 func AnimarFome():
 	match Fome:
-		0:
+		0.0:
 			$"Comida-status/AnimationFome".play("1")
-		1:
+		10.0:
 			$"Comida-status/AnimationFome".play("2")
-		2:
+		20.0:
 			$"Comida-status/AnimationFome".play("3")
-		3:
+		30.0:
 			$"Comida-status/AnimationFome".play("4")
-		4:
+		40.0:
 			$"Comida-status/AnimationFome".play("5")
-		5:
+		50.0:
 			$"Comida-status/AnimationFome".play("6")
-		6:
+		60.0:
 			$"Comida-status/AnimationFome".play("7")
-		7:
+		70.0:
 			$"Comida-status/AnimationFome".play("8")
-		8:
+		80.0:
 			$"Comida-status/AnimationFome".stop()
 			$TimerFome.stop()
 			$"Emocoes-Diro/AnimationPlayer".play("Morri")
@@ -140,22 +198,22 @@ func AnimarFome():
 func AnimarEmocao():
 	print("seu nivel de tristeza é:", Triste)
 	match Triste:
-		0:
+		0.0:
 			$"Emocoes-Diro/AnimationPlayer".play("Feliz")
 			print("To muito Feliz, muito obrigado")
-		1:
+		10.0:
 			$"Emocoes-Diro/AnimationPlayer".play("Neutro")
 			print("Acho que vai melhorar...")
-		2:
+		20.0:
 			$"Emocoes-Diro/AnimationPlayer".play("Bolado")
 			print("Você bem que podia fazer alguma coisa pra me ajudar, né papai?")
-		3:
+		30.0:
 			$"Emocoes-Diro/AnimationPlayer".play("PUTO")
 			print("É TUDO CULPA SUA, NIGUEM TE SUPORTA SEU LIXO!!!")
-		4:
+		40.0:
 			$"Emocoes-Diro/AnimationPlayer".play("Tite")
 			print("é tudo culpa minha, desculpa por ter nascido, logo irei resolver tudo... papai")
-		5:
+		50.0:
 			$"Emocoes-Diro/AnimationPlayer".play("Morri")
 			print("SEU DIRO SE MATOU POR CAUSA DA SUA INCOMPETENCIA...")
 			print("<-------MORREU------->")

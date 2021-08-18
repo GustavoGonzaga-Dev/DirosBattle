@@ -299,7 +299,7 @@ position = Vector2( 108.598, 93.702 )
 scale = Vector2( 0.366671, 0.414863 )
 frames = SubResource( 1 )
 animation = "estrelas"
-frame = 10
+frame = 5
 playing = true
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]
@@ -313,7 +313,7 @@ rotation = 0.364774
 scale = Vector2( 0.312126, 0.386383 )
 frames = SubResource( 2 )
 animation = "cometa"
-frame = 6
+frame = 5
 playing = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Fundo/fundo/ParallaxBackground"]

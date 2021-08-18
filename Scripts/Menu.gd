@@ -1,5 +1,33 @@
 extends Node2D
 
+var saveData = {
+	
+}
+
+# path string
+var saveGameFileName: String = "res://ArquivosBanco/informacoesDiro.txt"
+
+func _ready():
+	loadData()
+
+func loadData() -> void:
+	var dataFile = File.new()
+	if not dataFile.file_exists(saveGameFileName):
+		print("Não Existe Arquivo")
+		#return 
+	else:
+		print("Existe Arquivo")
+		$botao/TextureButton.visible = not $botao/TextureButton.visible
+		dataFile.open(saveGameFileName, File.READ)
+		while dataFile.get_position() < dataFile.get_len():
+			var nodeData = parse_json(dataFile.get_line())
+			saveData.ovoEscolhido = nodeData["ovoEscolhido"]
+			saveData.Fome = nodeData["Fome"]
+			saveData.Sede = nodeData["Sede"]
+			saveData.Triste = nodeData["Triste"]
+			saveData.lv = nodeData["lv"]
+	dataFile.close()
+
 func _on_AnimacaoTransicao_animation_finished(anim_name):
 	if anim_name == "Saindo":
 		get_tree().change_scene("res://Cenas/Dialogo.tscn")

@@ -138,7 +138,6 @@ func _on_AnimationPlayerTxtBox_animation_finished(anim_name):
 	animationPlayerBotoes.play("surgindoBotoes")
 	Rosto_Movendo.play("Apaga")
 
-
 func _on_btn_pressed():
 	bt += 1
 
@@ -153,7 +152,11 @@ func _on_AnimationOvoRosa_animation_finished(anim_name):
 
 func _on_ButtonDia_pressed():
 	saveData = {
-		"ovoEscolhido" : "A"
+		"ovoEscolhido" : "A",
+		"Fome" : 0,
+		"Sede" : 0,
+		"Triste" : 10,
+		"lv" : 0
 	}
 	saveData()
 	ovo = "A"
@@ -167,7 +170,11 @@ func _on_ButtonDia_pressed():
 
 func _on_ButtonNoite_pressed():
 	saveData = {
-		"ovoEscolhido" : "B"
+		"ovoEscolhido" : "B",
+		"Fome" : 0,
+		"Sede" : 0,
+		"Triste" : 10,
+		"lv" : 0
 	}
 	saveData()
 	ovo = "B"
