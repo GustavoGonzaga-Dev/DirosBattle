@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/OVO-VERDE-RACHANDO.png-f5bbd06b66a29dffb1da6b706f09aafb.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Img/Ovos/OVO-VERDE-RACHANDO.png"
+dest_files=[ "res://.import/OVO-VERDE-RACHANDO.png-f5bbd06b66a29dffb1da6b706f09aafb.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
