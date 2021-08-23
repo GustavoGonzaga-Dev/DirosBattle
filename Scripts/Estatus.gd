@@ -5,6 +5,7 @@ var Sede = 0
 var Triste = 0
 var lv = 0
 var lvTxt = "LV. %d"
+var Ovo
 
 onready var lblLv = $"LabelLV"
 
@@ -49,6 +50,12 @@ func getTriste():
 
 func getNivel():
 	return lv
+	
+func getOvo():
+	return Ovo
+
+func setOvo(saveData):
+	Ovo = saveData.get("ovoEscolhido")
 
 func setFome(saveData):
 	Fome = saveData.get("Fome")
@@ -68,8 +75,19 @@ func IniciarTudo():
 	setSede(saveData)
 	setTriste(saveData)
 	setNivel(saveData)
+	setOvo(saveData)
 	Tempo()
 	atualizarAnimacao()
+	
+func Salvar():
+	saveData = {"Fome": getFome(),
+	"Sede": getSede(),
+	"Triste":getTriste(),
+	"lv": getNivel(),
+	"ovoEscolhido": getOvo()
+	}
+	saveData()
+	print("Salvou Tudo já")
 	
 func Tempo():
 	$TimerFome.start()
@@ -77,7 +95,6 @@ func Tempo():
 
 func nextLvl():
 	lblLv.text = lvTxt % lv
-
 
 func atualizarAnimacao():
 	nextLvl()
