@@ -42,3 +42,8 @@ func _on_animacaoDiro_animation_finished(anim_name):
 			$"Ovos/animacaoDiro".play("MexendoOvoDia")
 		"AparecendoOvoNoite":
 			$"Ovos/animacaoDiro".play("MexendoOvoNoite")
+
+
+func _on_Save_pressed():
+	print("Indo Salvar...")
+	$Estatus.Salvar()
