@@ -401,7 +401,8 @@ tracks/0/keys = {
 script = ExtResource( 3 )
 
 [node name="Agua-status" type="Sprite" parent="."]
-position = Vector2( 16, 16 )
+position = Vector2( 24, 24 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
 hframes = 7
 vframes = 7
@@ -420,7 +421,8 @@ anims/8 = SubResource( 8 )
 wait_time = 30.0
 
 [node name="Comida-status" type="Sprite" parent="."]
-position = Vector2( 5, 15 )
+position = Vector2( 40, -4 )
+scale = Vector2( 1.75, 1.75 )
 texture = ExtResource( 1 )
 centered = false
 hframes = 6
@@ -443,8 +445,8 @@ anims/8 = SubResource( 16 )
 wait_time = 60.0
 
 [node name="Emocoes-Diro" type="Sprite" parent="."]
-position = Vector2( 16, 48 )
-scale = Vector2( 0.6875, 0.6875 )
+position = Vector2( 101.25, 21.25 )
+scale = Vector2( 1.17187, 1.17188 )
 texture = ExtResource( 4 )
 hframes = 4
 vframes = 5
@@ -469,8 +471,8 @@ __meta__ = {
 }
 
 [node name="Moeda-status" type="Sprite" parent="."]
-position = Vector2( 16, 70 )
-scale = Vector2( 0.833333, 0.833333 )
+position = Vector2( 132.667, 22.6667 )
+scale = Vector2( 1.20833, 1.08333 )
 texture = ExtResource( 6 )
 hframes = 3
 vframes = 4

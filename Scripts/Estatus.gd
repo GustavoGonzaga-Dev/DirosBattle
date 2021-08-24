@@ -218,50 +218,91 @@ func AnimarSede():
 		#	print("<-------MORREU------->")
 
 func AnimarFome():
-	match Fome:
-		0.0:
-			$"Comida-status/AnimationFome".play("1")
-		10.0:
-			$"Comida-status/AnimationFome".play("2")
-		20.0:
-			$"Comida-status/AnimationFome".play("3")
-		30.0:
-			$"Comida-status/AnimationFome".play("4")
-		40.0:
-			$"Comida-status/AnimationFome".play("5")
-		50.0:
-			$"Comida-status/AnimationFome".play("6")
-		60.0:
-			$"Comida-status/AnimationFome".play("7")
-		70.0:
-			$"Comida-status/AnimationFome".play("8")
-		80.0:
-			$"Comida-status/AnimationFome".stop()
-			$TimerFome.stop()
-			$"Emocoes-Diro/AnimationPlayer".play("Morri")
-			print("<-------MORREU------->")
+	if Fome >=0.0 and Fome < 10.0:
+		$"Comida-status/AnimationFome".play("1")
+	elif Fome >=10.0 and Fome < 20.0:
+		$"Comida-status/AnimationFome".play("2")
+	elif Fome >=20.0 and Fome < 30.0:
+		$"Comida-status/AnimationFome".play("3")
+	elif Fome >=30.0 and Fome < 40.0:
+		$"Comida-status/AnimationFome".play("4")
+	elif Fome >=40.0 and Fome < 50.0:
+		$"Comida-status/AnimationFome".play("5")
+	elif Fome >=50.0 and Fome < 26.0:
+		$"Comida-status/AnimationFome".play("6")
+	elif Fome >=60.0 and Fome < 70.0:
+		$"Comida-status/AnimationFome".play("7")
+	elif Fome >=70.0 and Fome < 80.0:
+		$"Comida-status/AnimationFome".play("8")
+	elif Fome >=80.0:
+		$"Comida-status/AnimationFome".stop()
+		$TimerFome.stop()
+		$"Emocoes-Diro/AnimationPlayer".play("Morri")
+		print("<-------MORREU------->")
+		
+	#match Fome:
+		#0.0:
+			#$"Comida-status/AnimationFome".play("1")
+		#10.0:
+			#$"Comida-status/AnimationFome".play("2")
+	#	20.0:
+			#$"Comida-status/AnimationFome".play("3")
+		#30.0:
+			#$"Comida-status/AnimationFome".play("4")
+		#40.0:
+			#$"Comida-status/AnimationFome".play("5")
+		#50.0:
+			#$"Comida-status/AnimationFome".play("6")
+		#60.0:
+			#$"Comida-status/AnimationFome".play("7")
+		#70.0:
+			#$"Comida-status/AnimationFome".play("8")
+		#80.0:
+			#$"Comida-status/AnimationFome".stop()
+			#$TimerFome.stop()
+			#$"Emocoes-Diro/AnimationPlayer".play("Morri")
+			#print("<-------MORREU------->")
 
 func AnimarEmocao():
-	print("seu nivel de tristeza é:", Triste)
-	match Triste:
-		0.0:
-			$"Emocoes-Diro/AnimationPlayer".play("Feliz")
-			print("To muito Feliz, muito obrigado")
-		10.0:
-			$"Emocoes-Diro/AnimationPlayer".play("Neutro")
-			print("Acho que vai melhorar...")
-		20.0:
-			$"Emocoes-Diro/AnimationPlayer".play("Bolado")
-			print("Você bem que podia fazer alguma coisa pra me ajudar, né papai?")
-		30.0:
-			$"Emocoes-Diro/AnimationPlayer".play("PUTO")
-			print("É TUDO CULPA SUA, NIGUEM TE SUPORTA SEU LIXO!!!")
-		40.0:
-			$"Emocoes-Diro/AnimationPlayer".play("Tite")
-			print("é tudo culpa minha, desculpa por ter nascido, logo irei resolver tudo... papai")
-		50.0:
-			$"Emocoes-Diro/AnimationPlayer".play("Morri")
-			print("SEU DIRO SE MATOU POR CAUSA DA SUA INCOMPETENCIA...")
-			print("<-------MORREU------->")
-			$TimerFome.stop()
-			$TimerSede.stop()
+	if Triste >=0.0 and Triste < 10.0:
+		$"Emocoes-Diro/AnimationPlayer".play("Feliz")
+	elif Triste >=10.0 and Triste < 20.0:
+		$"Emocoes-Diro/AnimationPlayer".play("Neutro")
+	elif Triste >=20.0 and Triste < 30.0:
+		$"Emocoes-Diro/AnimationPlayer".play("Bolado")
+	elif Triste >=30.0 and Triste < 40.0:
+		$"Emocoes-Diro/AnimationPlayer".play("PUTO")
+	elif Triste >=40.0 and Triste < 50.0:
+		$"Emocoes-Diro/AnimationPlayer".play("Tite")
+	elif Triste >=50.0 and Triste < 26.0:
+		$"Emocoes-Diro/AnimationPlayer".play("Morri")
+		print("SEU DIRO SE MATOU POR CAUSA DA SUA INCOMPETENCIA...")
+		print("<-------MORREU------->")
+		$TimerFome.stop()
+		$TimerSede.stop()
+	
+	
+	#print("seu nivel de tristeza é:", Triste)
+	
+	#match Triste:
+		#0.0:
+			#$"Emocoes-Diro/AnimationPlayer".play("Feliz")
+			#print("To muito Feliz, muito obrigado")
+		#10.0:
+			#$"Emocoes-Diro/AnimationPlayer".play("Neutro")
+			#print("Acho que vai melhorar...")
+		#20.0:
+			#$"Emocoes-Diro/AnimationPlayer".play("Bolado")
+			#print("Você bem que podia fazer alguma coisa pra me ajudar, né papai?")
+		#30.0:
+			#$"Emocoes-Diro/AnimationPlayer".play("PUTO")
+			#print("É TUDO CULPA SUA, NIGUEM TE SUPORTA SEU LIXO!!!")
+		#40.0:
+			#$"Emocoes-Diro/AnimationPlayer".play("Tite")
+			#print("é tudo culpa minha, desculpa por ter nascido, logo irei resolver tudo... papai")
+		#50.0:
+			#$"Emocoes-Diro/AnimationPlayer".play("Morri")
+			#print("SEU DIRO SE MATOU POR CAUSA DA SUA INCOMPETENCIA...")
+			#print("<-------MORREU------->")
+			#$TimerFome.stop()
+			#$TimerSede.stop()
