@@ -5,10 +5,14 @@ var saveData = {
 }
 
 var resposta
+var AB = 0
 var saveGameFileName: String = "res://ArquivosBanco/informacoesDiro.txt"
 
 func _ready():
 	self.loadData()
+	if saveData.get("lv") !=0:
+		$Tocar.visible = not $Tocar.visible
+		#$"Tocar/AnimationTocar".play("Sumindo")
 	
 func loadData() -> void:
 	var dataFile = File.new()
@@ -18,23 +22,34 @@ func loadData() -> void:
 	while dataFile.get_position() < dataFile.get_len():
 		var nodeData = parse_json(dataFile.get_line())
 		saveData.ovoEscolhido = nodeData["ovoEscolhido"]
+		saveData.Fome = nodeData["Fome"]
+		saveData.Sede = nodeData["Sede"]
+		saveData.Triste = nodeData["Triste"]
+		saveData.lv = nodeData["lv"]
 	dataFile.close()
 
 func _on_AnimacaoTransicao_animation_finished(anim_name):
 	resposta = saveData.values()
 	if anim_name == "Entrando":
-		$Estatus/AnimationPlayer.play("aparecendo")
+		var nn = saveData.get("lv")
 		if resposta.front() == "A":
-			#$"Ovos/OVO-BLUE".visible = not $"Ovos/OVO-BLUE".visible
-			$"Ovos/animacaoDiro".play("AparecendoOvoDia")
+			print(nn)
+			match nn:
+				0.0:
+					$"Ovos/animacaoDiro".play("AparecendoOvoDia")
+				_:
+					anima()
 		elif resposta.front() == "B":
 			#$"Ovos/OVO-VERDE".visible = not $"Ovos/OVO-VERDE".visible
 			$"Ovos/animacaoDiro".play("AparecendoOvoNoite")
 	elif anim_name == "Saindo":
 		pass
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	$Estatus.IniciarTudo()
+		
+func anima():
+	$"Tocar/AnimationTocar".play("Sumindo")
+	$"Estatus/AnimationEstatusAparecendo".play("aparecendo")
+	$"Ovos/Primeira-Forma".visible = not $"Ovos/Primeira-Forma".visible
+	$"Ovos/animacaoDiro".play("PrimeiraFormaDiaIdle")
 
 func _on_animacaoDiro_animation_finished(anim_name):
 	match anim_name:
@@ -42,8 +57,26 @@ func _on_animacaoDiro_animation_finished(anim_name):
 			$"Ovos/animacaoDiro".play("MexendoOvoDia")
 		"AparecendoOvoNoite":
 			$"Ovos/animacaoDiro".play("MexendoOvoNoite")
-
+		"QuebrandoOvoDia":
+			anima()
 
 func _on_Save_pressed():
 	print("Indo Salvar...")
 	$Estatus.Salvar()
+
+func _on_Tocar_pressed():
+	AB +=1
+	print("infelizmente foi")
+	if AB == 5:
+		$Tocar.visible = not $Tocar.visible
+		if resposta.front() == "A":
+			$"Ovos/OVO-BLUE".visible = not $"Ovos/OVO-BLUE".visible
+			$"Ovos/animacaoDiro".play("QuebrandoOvoDia")
+		elif resposta.front() == "B":
+			#$"Ovos/OVO-VERDE".visible = not $"Ovos/OVO-VERDE".visible
+			pass
+
+func _on_AnimationEstatusAparecendo_animation_finished(anim_name):
+	$Estatus.IniciarTudo()
+	#$Estatus.setNivel(saveData)
+	#$Estatus.AbrirOvo()

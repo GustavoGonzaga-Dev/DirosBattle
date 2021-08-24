@@ -6,6 +6,8 @@ var Triste = 0
 var lv = 0
 var lvTxt = "LV. %d"
 var Ovo
+var Moeda
+var AB = 0
 
 onready var lblLv = $"LabelLV"
 
@@ -78,6 +80,7 @@ func IniciarTudo():
 	setOvo(saveData)
 	Tempo()
 	atualizarAnimacao()
+	$"Moeda-status/AnimationMoeda".play("Moeda")
 	
 func Salvar():
 	saveData = {"Fome": getFome(),
@@ -92,6 +95,10 @@ func Salvar():
 func Tempo():
 	$TimerFome.start()
 	$TimerSede.start()
+
+func AbrirOvo():
+	lv = 1
+	atualizarAnimacao()
 
 func nextLvl():
 	lblLv.text = lvTxt % lv
@@ -165,28 +172,50 @@ func _on_TimerFome_timeout():
 	ToCuFome()
 
 func AnimarSede():
-	match Sede:
-		0.0:
-			$"Agua-status/AnimationSede".play("1")
-		10.0:
-			$"Agua-status/AnimationSede".play("2")
-		20.0:
-			$"Agua-status/AnimationSede".play("3")
-		30.0:
-			$"Agua-status/AnimationSede".play("4")
-		40.0:
-			$"Agua-status/AnimationSede".play("5")
-		50.0:
-			$"Agua-status/AnimationSede".play("6")
-		60.0:
-			$"Agua-status/AnimationSede".play("7")
-		70.0:
-			$"Agua-status/AnimationSede".play("8")
-		80.0:
-			$"Agua-status/AnimationSede".stop()
-			$TimerSede.stop()
-			$"Emocoes-Diro/AnimationPlayer".play("Morri")
-			print("<-------MORREU------->")
+	if Sede >=0.0 and Sede < 10.0:
+		$"Agua-status/AnimationSede".play("1")
+	elif Sede >=10.0 and Sede < 20.0:
+		$"Agua-status/AnimationSede".play("2")
+	elif Sede >=20.0 and Sede < 30.0:
+		$"Agua-status/AnimationSede".play("3")
+	elif Sede >=30.0 and Sede < 40.0:
+		$"Agua-status/AnimationSede".play("4")
+	elif Sede >=40.0 and Sede < 50.0:
+		$"Agua-status/AnimationSede".play("5")
+	elif Sede >=50.0 and Sede < 26.0:
+		$"Agua-status/AnimationSede".play("6")
+	elif Sede >=60.0 and Sede < 70.0:
+		$"Agua-status/AnimationSede".play("7")
+	elif Sede >=70.0 and Sede < 80.0:
+		$"Agua-status/AnimationSede".play("8")
+	elif Sede >=80.0:
+		$"Agua-status/AnimationSede".stop()
+		$TimerSede.stop()
+		$"Emocoes-Diro/AnimationPlayer".play("Morri")
+		print("<-------MORREU------->")
+		
+	#match Sede:
+		#0.0:
+			#$"Agua-status/AnimationSede".play("1")
+		#10.0:
+			#$"Agua-status/AnimationSede".play("2")
+		#20.0:
+		#	$"Agua-status/AnimationSede".play("3")
+		#30.0:
+		#	$"Agua-status/AnimationSede".play("4")
+		#40.0:
+		#	$"Agua-status/AnimationSede".play("5")
+		#50.0:
+		#	$"Agua-status/AnimationSede".play("6")
+		#60.0:
+		#	$"Agua-status/AnimationSede".play("7")
+		#70.0:
+		#	$"Agua-status/AnimationSede".play("8")
+		#80.0:
+		#	$"Agua-status/AnimationSede".stop()
+		#	$TimerSede.stop()
+		#	$"Emocoes-Diro/AnimationPlayer".play("Morri")
+		#	print("<-------MORREU------->")
 
 func AnimarFome():
 	match Fome:
