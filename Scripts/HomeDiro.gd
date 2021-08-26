@@ -52,7 +52,8 @@ func _on_AnimacaoTransicao_animation_finished(anim_name):
 		pass
 		
 func anima():
-	$"Estatus/AnimationEstatusAparecendo".play("aparecendo")
+	$"Ovos/Estatus/AnimationEstatusAparecendo".play("aparecendo")
+	#$"Estatus/AnimationEstatusAparecendo".play("aparecendo")
 	if resposta.front() == "A":
 		$Ovos.AparecendoPrimeiraFormaDia()
 	elif resposta.front() == "B":
@@ -60,25 +61,28 @@ func anima():
 
 func _on_Save_pressed():
 	print("Indo Salvar...")
-	$Estatus.Salvar()
+	$Ovos/Estatus.Salvar()
 
 func _on_Tocar_pressed():
 	AB +=1
 	print("infelizmente foi")
 	if AB == 5:
 		$Tocar.visible = not $Tocar.visible
-		$"Estatus/AnimationEstatusAparecendo".play("aparecendo")
+		$"Ovos/Estatus/AnimationEstatusAparecendo".play("aparecendo")
+		#$"Estatus/AnimationEstatusAparecendo".play("aparecendo")
 		penis = true
+		$Ovos.setPenis(penis)
 		if resposta.front() == "A":
 			$Ovos.QuebrandoOvoDia()
 		elif resposta.front() == "B":
 			$Ovos.QuebrandoOvoNoite()
 
-func _on_AnimationEstatusAparecendo_animation_finished(anim_name):
-	if penis == true:
-		$Estatus.IniciarTudo()
-		saveData.lv = 1
-		$Estatus.setNivel(saveData)
-		$Estatus.Salvar()
-	else:
-		$Estatus.IniciarTudo()
+#func _on_AnimationEstatusAparecendo_animation_finished(anim_name):
+	#if penis == true:
+		#$Ovos/Estatus.IniciarTudo()
+		#$Estatus.IniciarTudo()
+		#saveData.lv = 1
+		#$Ovos/Estatus.setNivel(saveData)
+		#$Ovos/Estatus.Salvar()
+	#else:
+		#$Ovos/Estatus.IniciarTudo()

@@ -5,6 +5,15 @@ func _ready():
 
 func InicioDeTudo():
 	pass
+	
+var pen = false
+
+var saveData = {
+	
+}
+
+func setPenis(penis):
+	pen = penis
 
 func Evoluir(lv, ovo):
 	match ovo:
@@ -51,3 +60,14 @@ func _on_animacaoDiro_animation_finished(anim_name):
 		"QuebrandoOvoNoite":
 			AparecendoPrimeiraFormaNoite()
 			#anima()
+
+
+func _on_AnimationEstatusAparecendo_animation_finished(anim_name):
+	if pen == true:
+		$Estatus.IniciarTudo()
+		#$Estatus.IniciarTudo()
+		saveData.lv = 1
+		$Estatus.setNivel(saveData)
+		$Estatus.Salvar()
+	else:
+		$Estatus.IniciarTudo()
