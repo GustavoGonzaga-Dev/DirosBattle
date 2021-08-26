@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Img/RostoFundo.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/HomeDiro.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://Img/Ovos/Primeira-Forma.png" type="Texture" id=7]
 [ext_resource path="res://Img/Ovos/OVO-BLUE-RACHANDO.png" type="Texture" id=8]
+[ext_resource path="res://Img/Ovos/Primeira-Forma-Noite.png" type="Texture" id=9]
+[ext_resource path="res://Img/Ovos/OVO-VERDE-RACHANDO.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 length = 2.0
@@ -120,7 +122,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=8]
 resource_name = "PrimeiraFormaDiaIdle"
-length = 2.6
+length = 2.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Primeira-Forma:frame")
@@ -129,13 +131,30 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 14, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+"values": [ 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
 }
 
 [sub_resource type="Animation" id=9]
+resource_name = "PrimeiraFormaDiaIdleNOITE"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Primeira-Forma-Noite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+}
+
+[sub_resource type="Animation" id=10]
 length = 3.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("OVO-BLUE-RACHANDO:frame")
@@ -150,13 +169,26 @@ tracks/0/keys = {
 "values": [ 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=14]
+resource_name = "QuebrandoOvoNoite"
+length = 3.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-VERDE-RACHANDO:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.7, 1, 1.3, 1.6, 1.9, 2.2, 2.5, 2.7, 2.9, 3.1, 3.3, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 40, 40 )
 
-[sub_resource type="Animation" id=12]
-resource_name = "Sumindo"
+[sub_resource type="Animation" id=13]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -220,6 +252,14 @@ texture = ExtResource( 4 )
 vframes = 2
 frame = 1
 
+[node name="Primeira-Forma-Noite" type="Sprite" parent="Ovos"]
+visible = false
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 9 )
+hframes = 4
+vframes = 4
+
 [node name="Primeira-Forma" type="Sprite" parent="Ovos"]
 visible = false
 position = Vector2( 80, 152 )
@@ -227,7 +267,15 @@ scale = Vector2( 2.625, 2.625 )
 texture = ExtResource( 7 )
 hframes = 4
 vframes = 4
-frame = 14
+frame = 13
+
+[node name="OVO-VERDE-RACHANDO" type="Sprite" parent="Ovos"]
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 10 )
+hframes = 4
+vframes = 4
+frame = 13
 
 [node name="OVO-BLUE-RACHANDO" type="Sprite" parent="Ovos"]
 position = Vector2( 80, 152 )
@@ -250,8 +298,9 @@ anims/AparecendoOvoNoite = SubResource( 5 )
 anims/MexendoOvoDia = SubResource( 6 )
 anims/MexendoOvoNoite = SubResource( 7 )
 anims/PrimeiraFormaDiaIdle = SubResource( 8 )
-anims/QuebrandoOvoDia = SubResource( 9 )
-anims/QuebrandoOvoNoite = SubResource( 10 )
+anims/PrimeiraFormaDiaIdleNOITE = SubResource( 9 )
+anims/QuebrandoOvoDia = SubResource( 10 )
+anims/QuebrandoOvoNoite = SubResource( 14 )
 
 [node name="Save" type="TextureButton" parent="."]
 margin_left = 104.0
@@ -267,10 +316,10 @@ __meta__ = {
 
 [node name="Tocar" type="TouchScreenButton" parent="."]
 position = Vector2( 42, 112 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="AnimationTocar" type="AnimationPlayer" parent="Tocar"]
-anims/Sumindo = SubResource( 12 )
+anims/Sumindo = SubResource( 13 )
 
 [connection signal="animation_finished" from="transição/ColorRect/AnimacaoTransicao" to="." method="_on_AnimacaoTransicao_animation_finished"]
 [connection signal="animation_finished" from="Estatus/AnimationEstatusAparecendo" to="." method="_on_AnimationEstatusAparecendo_animation_finished"]

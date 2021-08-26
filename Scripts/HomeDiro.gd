@@ -33,7 +33,7 @@ func _on_AnimacaoTransicao_animation_finished(anim_name):
 	if anim_name == "Entrando":
 		var nn = saveData.get("lv")
 		if resposta.front() == "A":
-			print(nn)
+			#print(nn)
 			match nn:
 				0.0:
 					$"Ovos/animacaoDiro".play("AparecendoOvoDia")
@@ -41,15 +41,24 @@ func _on_AnimacaoTransicao_animation_finished(anim_name):
 					anima()
 		elif resposta.front() == "B":
 			#$"Ovos/OVO-VERDE".visible = not $"Ovos/OVO-VERDE".visible
-			$"Ovos/animacaoDiro".play("AparecendoOvoNoite")
+			match nn:
+				0.0:
+					$"Ovos/animacaoDiro".play("AparecendoOvoNoite")
+				_:
+					anima()
+			
 	elif anim_name == "Saindo":
 		pass
 		
 func anima():
 	$"Tocar/AnimationTocar".play("Sumindo")
 	$"Estatus/AnimationEstatusAparecendo".play("aparecendo")
-	$"Ovos/Primeira-Forma".visible = not $"Ovos/Primeira-Forma".visible
-	$"Ovos/animacaoDiro".play("PrimeiraFormaDiaIdle")
+	if resposta.front() == "A":
+		$"Ovos/Primeira-Forma".visible = not $"Ovos/Primeira-Forma".visible
+		$"Ovos/animacaoDiro".play("PrimeiraFormaDiaIdle")
+	elif resposta.front() == "B":
+		$"Ovos/Primeira-Forma-Noite".visible = not $"Ovos/Primeira-Forma-Noite".visible
+		$"Ovos/animacaoDiro".play("PrimeiraFormaDiaIdleNOITE")
 
 func _on_animacaoDiro_animation_finished(anim_name):
 	match anim_name:
@@ -58,6 +67,8 @@ func _on_animacaoDiro_animation_finished(anim_name):
 		"AparecendoOvoNoite":
 			$"Ovos/animacaoDiro".play("MexendoOvoNoite")
 		"QuebrandoOvoDia":
+			anima()
+		"QuebrandoOvoNoite":
 			anima()
 
 func _on_Save_pressed():
@@ -73,8 +84,8 @@ func _on_Tocar_pressed():
 			$"Ovos/OVO-BLUE".visible = not $"Ovos/OVO-BLUE".visible
 			$"Ovos/animacaoDiro".play("QuebrandoOvoDia")
 		elif resposta.front() == "B":
-			#$"Ovos/OVO-VERDE".visible = not $"Ovos/OVO-VERDE".visible
-			pass
+			$"Ovos/OVO-VERDE".visible = not $"Ovos/OVO-VERDE".visible
+			$"Ovos/animacaoDiro".play("QuebrandoOvoNoite")
 
 func _on_AnimationEstatusAparecendo_animation_finished(anim_name):
 	$Estatus.IniciarTudo()
