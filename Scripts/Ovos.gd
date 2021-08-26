@@ -5,7 +5,18 @@ func _ready():
 
 func InicioDeTudo():
 	pass
-	
+
+func Evoluir(lv, ovo):
+	match ovo:
+		"A":
+			if lv >= 5:
+				$"Segunda-Forma-Azul".visible = not $"Segunda-Forma-Azul".visible
+				$"Segunda-Forma-Azul/animacaoEvDia".play("Idle")
+		"B":
+			if lv >= 5:
+				$"Segunda-Forma-Noite".visible = not $"Segunda-Forma-Noite".visible
+		
+
 func AparecendoOvoDia():
 	$"animacaoDiro".play("AparecendoOvoDia")
 
