@@ -1,0 +1,201 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Img/Ovos/OVO-BLUE.png" type="Texture" id=1]
+[ext_resource path="res://Img/Ovos/OVO-VERDE.png" type="Texture" id=2]
+[ext_resource path="res://Img/Ovos/Primeira-Forma.png" type="Texture" id=3]
+[ext_resource path="res://Img/Ovos/OVO-BLUE-RACHANDO.png" type="Texture" id=4]
+[ext_resource path="res://Img/Ovos/OVO-VERDE-RACHANDO.png" type="Texture" id=5]
+[ext_resource path="res://Img/Ovos/Primeira-Forma-Noite.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Ovos.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "AparecendoOvoDia"
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-BLUE:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "AparecendoOvoNoite"
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-VERDE:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "MexendoOvoDia"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-BLUE:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "MexendoOvoNoite"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-VERDE:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "PrimeiraFormaDiaIdle"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Primeira-Forma:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "PrimeiraFormaDiaIdleNOITE"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Primeira-Forma-Noite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 3.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-BLUE-RACHANDO:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.7, 1, 1.3, 1.6, 1.9, 2.2, 2.5, 2.7, 2.9, 3.1, 3.3, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "QuebrandoOvoNoite"
+length = 3.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-VERDE-RACHANDO:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.7, 1, 1.3, 1.6, 1.9, 2.2, 2.5, 2.7, 2.9, 3.1, 3.3, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[node name="Ovos" type="Node"]
+script = ExtResource( 7 )
+
+[node name="OVO-BLUE" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 1 )
+vframes = 2
+frame = 1
+
+[node name="Primeira-Forma-Noite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 6 )
+hframes = 4
+vframes = 4
+
+[node name="Primeira-Forma" type="Sprite" parent="."]
+visible = false
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 3 )
+hframes = 4
+vframes = 4
+frame = 13
+
+[node name="OVO-VERDE-RACHANDO" type="Sprite" parent="."]
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 5 )
+hframes = 4
+vframes = 4
+frame = 13
+
+[node name="OVO-BLUE-RACHANDO" type="Sprite" parent="."]
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 4 )
+hframes = 4
+vframes = 4
+frame = 13
+
+[node name="OVO-VERDE" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 2 )
+vframes = 2
+
+[node name="animacaoDiro" type="AnimationPlayer" parent="."]
+anims/AparecendoOvoDia = SubResource( 1 )
+anims/AparecendoOvoNoite = SubResource( 2 )
+anims/MexendoOvoDia = SubResource( 3 )
+anims/MexendoOvoNoite = SubResource( 4 )
+anims/PrimeiraFormaDiaIdle = SubResource( 5 )
+anims/PrimeiraFormaDiaIdleNOITE = SubResource( 6 )
+anims/QuebrandoOvoDia = SubResource( 7 )
+anims/QuebrandoOvoNoite = SubResource( 8 )
+
+[connection signal="animation_finished" from="animacaoDiro" to="." method="_on_animacaoDiro_animation_finished"]

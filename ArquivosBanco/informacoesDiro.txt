@@ -1,1 +1,0 @@
-{"Fome":0,"Sede":0,"Triste":9,"lv":2,"ovoEscolhido":"B"}

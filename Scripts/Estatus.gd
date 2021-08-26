@@ -90,6 +90,7 @@ func Salvar():
 	"ovoEscolhido": getOvo()
 	}
 	saveData()
+	atualizarAnimacao()
 	print("Salvou Tudo já")
 	
 func Tempo():
