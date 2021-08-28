@@ -81,6 +81,7 @@ func IniciarTudo():
 	Tempo()
 	atualizarAnimacao()
 	$"Moeda-status/AnimationMoeda".play("Moeda")
+	$"STATUS-BAR/StatusAnimated".play("mechendinho")
 	
 func Salvar():
 	saveData = {"Fome": getFome(),
@@ -90,6 +91,7 @@ func Salvar():
 	"ovoEscolhido": getOvo()
 	}
 	saveData()
+	atualizarAnimacao()
 	print("Salvou Tudo já")
 	
 func Tempo():
@@ -274,9 +276,9 @@ func AnimarEmocao():
 		$"Emocoes-Diro/AnimationPlayer".play("PUTO")
 	elif Triste >=40.0 and Triste < 50.0:
 		$"Emocoes-Diro/AnimationPlayer".play("Tite")
-	elif Triste >=50.0 and Triste < 26.0:
+	elif Triste >=50.0:
 		$"Emocoes-Diro/AnimationPlayer".play("Morri")
-		print("SEU DIRO SE MATOU POR CAUSA DA SUA INCOMPETENCIA...")
+		print("SEU DIRO COMETEU SUICIDIO POR CAUSA DA SUA INCOMPETENCIA...")
 		print("<-------MORREU------->")
 		$TimerFome.stop()
 		$TimerSede.stop()

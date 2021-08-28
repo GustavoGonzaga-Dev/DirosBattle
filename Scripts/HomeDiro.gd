@@ -4,15 +4,17 @@ var saveData = {
 	
 }
 
+var penis
 var resposta
 var AB = 0
 var saveGameFileName: String = "res://ArquivosBanco/informacoesDiro.txt"
 
 func _ready():
 	self.loadData()
+	#$Ovos.Evoluir(saveData.get("lv"), saveData.get("ovoEscolhido"))
 	if saveData.get("lv") !=0:
 		$Tocar.visible = not $Tocar.visible
-		#$"Tocar/AnimationTocar".play("Sumindo")
+		#$Ovos.Evoluir(saveData.get("lv"), saveData.get("ovoEscolhido"))
 	
 func loadData() -> void:
 	var dataFile = File.new()
@@ -31,63 +33,60 @@ func loadData() -> void:
 func _on_AnimacaoTransicao_animation_finished(anim_name):
 	resposta = saveData.values()
 	if anim_name == "Entrando":
-		var nn = saveData.get("lv")
-		if resposta.front() == "A":
-			#print(nn)
-			match nn:
-				0.0:
-					$"Ovos/animacaoDiro".play("AparecendoOvoDia")
-				_:
-					anima()
-		elif resposta.front() == "B":
-			#$"Ovos/OVO-VERDE".visible = not $"Ovos/OVO-VERDE".visible
-			match nn:
-				0.0:
-					$"Ovos/animacaoDiro".play("AparecendoOvoNoite")
-				_:
-					anima()
-			
+		$Ovos.Evoluir(saveData.get("lv"), saveData.get("ovoEscolhido"))
+		pass
+		#print("chegou ate aqui")
+		#var nn = saveData.get("lv")
+		#var esc = saveData.get("ovoEscolhido")
+		#if esc == "A":
+			#match nn:
+				#0.0:
+					#$Ovos.AparecendoOvoDia()
+				#_:
+					#anima()
+		#elif esc == "B":
+			#print("chegou ate aqui2")
+			#match nn:
+				#0.0:
+					#$Ovos.AparecendoOvoNoite()
+				#_:
+					#print("chegou ate aqui3")
+					#anima()
 	elif anim_name == "Saindo":
 		pass
 		
-func anima():
-	$"Tocar/AnimationTocar".play("Sumindo")
-	$"Estatus/AnimationEstatusAparecendo".play("aparecendo")
-	if resposta.front() == "A":
-		$"Ovos/Primeira-Forma".visible = not $"Ovos/Primeira-Forma".visible
-		$"Ovos/animacaoDiro".play("PrimeiraFormaDiaIdle")
-	elif resposta.front() == "B":
-		$"Ovos/Primeira-Forma-Noite".visible = not $"Ovos/Primeira-Forma-Noite".visible
-		$"Ovos/animacaoDiro".play("PrimeiraFormaDiaIdleNOITE")
-
-func _on_animacaoDiro_animation_finished(anim_name):
-	match anim_name:
-		"AparecendoOvoDia":
-			$"Ovos/animacaoDiro".play("MexendoOvoDia")
-		"AparecendoOvoNoite":
-			$"Ovos/animacaoDiro".play("MexendoOvoNoite")
-		"QuebrandoOvoDia":
-			anima()
-		"QuebrandoOvoNoite":
-			anima()
+#func anima():
+	#$"Ovos/Estatus/AnimationEstatusAparecendo".play("aparecendo")
+	#$"Estatus/AnimationEstatusAparecendo".play("aparecendo")
+	#if resposta.front() == "A":
+		#$Ovos.AparecendoPrimeiraFormaDia()
+	#elif resposta.front() == "B":
+		#$Ovos.AparecendoPrimeiraFormaNoite()
 
 func _on_Save_pressed():
 	print("Indo Salvar...")
-	$Estatus.Salvar()
+	$Ovos/Estatus.Salvar()
 
 func _on_Tocar_pressed():
 	AB +=1
 	print("infelizmente foi")
 	if AB == 5:
 		$Tocar.visible = not $Tocar.visible
+		$"Ovos/Estatus/AnimationEstatusAparecendo".play("aparecendo")
+		#$"Estatus/AnimationEstatusAparecendo".play("aparecendo")
+		penis = true
+		$Ovos.setPenis(penis)
 		if resposta.front() == "A":
-			$"Ovos/OVO-BLUE".visible = not $"Ovos/OVO-BLUE".visible
-			$"Ovos/animacaoDiro".play("QuebrandoOvoDia")
+			$Ovos.QuebrandoOvoDia()
 		elif resposta.front() == "B":
-			$"Ovos/OVO-VERDE".visible = not $"Ovos/OVO-VERDE".visible
-			$"Ovos/animacaoDiro".play("QuebrandoOvoNoite")
+			$Ovos.QuebrandoOvoNoite()
 
-func _on_AnimationEstatusAparecendo_animation_finished(anim_name):
-	$Estatus.IniciarTudo()
-	#$Estatus.setNivel(saveData)
-	#$Estatus.AbrirOvo()
+#func _on_AnimationEstatusAparecendo_animation_finished(anim_name):
+	#if penis == true:
+		#$Ovos/Estatus.IniciarTudo()
+		#$Estatus.IniciarTudo()
+		#saveData.lv = 1
+		#$Ovos/Estatus.setNivel(saveData)
+		#$Ovos/Estatus.Salvar()
+	#else:
+		#$Ovos/Estatus.IniciarTudo()

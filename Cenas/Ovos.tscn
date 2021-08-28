@@ -1,0 +1,405 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Img/Ovos/OVO-BLUE.png" type="Texture" id=1]
+[ext_resource path="res://Img/Ovos/OVO-VERDE.png" type="Texture" id=2]
+[ext_resource path="res://Img/Ovos/Primeira-Forma.png" type="Texture" id=3]
+[ext_resource path="res://Img/Ovos/OVO-BLUE-RACHANDO.png" type="Texture" id=4]
+[ext_resource path="res://Img/Ovos/OVO-VERDE-RACHANDO.png" type="Texture" id=5]
+[ext_resource path="res://Img/Ovos/Primeira-Forma-Noite.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Ovos.gd" type="Script" id=7]
+[ext_resource path="res://Img/Ovos/Segunda-Forma-Noite.png" type="Texture" id=8]
+[ext_resource path="res://Img/Ovos/Segunda-Forma-Azul.png" type="Texture" id=9]
+[ext_resource path="res://Cenas/Estatus.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "AndandoDireita"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 16, 17, 18, 19, 20, 17, 18 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "AndandoEsquerda"
+length = 1.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 23, 24, 25, 26, 24, 23 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 8, 9 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 16, 17, 18, 19, 20, 17, 18 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 1.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 23, 24, 25, 26, 24, 23 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 8, 9 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=11]
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-BLUE:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-VERDE:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-BLUE:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-VERDE:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Primeira-Forma:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Primeira-Forma-Noite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 3.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-BLUE-RACHANDO:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.7, 1, 1.3, 1.6, 1.9, 2.2, 2.5, 2.7, 2.9, 3.1, 3.3, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 3.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("OVO-VERDE-RACHANDO:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.7, 1, 1.3, 1.6, 1.9, 2.2, 2.5, 2.7, 2.9, 3.1, 3.3, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=19]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Ovos" type="Node"]
+script = ExtResource( 7 )
+
+[node name="OVO-BLUE" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 1 )
+vframes = 2
+frame = 1
+
+[node name="Segunda-Forma-Noite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 8 )
+hframes = 5
+vframes = 6
+
+[node name="animacaoEvNoite" type="AnimationPlayer" parent="Segunda-Forma-Noite"]
+anims/AndandoDireita = SubResource( 1 )
+anims/AndandoEsquerda = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/IdleDireita = SubResource( 4 )
+anims/IdleEsquerda = SubResource( 5 )
+
+[node name="Segunda-Forma-Azul" type="Sprite" parent="."]
+visible = false
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 9 )
+hframes = 5
+vframes = 6
+frame = 15
+
+[node name="animacaoEvDia" type="AnimationPlayer" parent="Segunda-Forma-Azul"]
+anims/AndandoDireita = SubResource( 6 )
+anims/AndandoEsquerda = SubResource( 7 )
+anims/Idle = SubResource( 8 )
+anims/IdleDireita = SubResource( 9 )
+anims/IdleEsquerda = SubResource( 10 )
+
+[node name="Primeira-Forma-Noite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 6 )
+hframes = 4
+vframes = 4
+frame = 1
+
+[node name="Primeira-Forma" type="Sprite" parent="."]
+visible = false
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 3 )
+hframes = 4
+vframes = 4
+
+[node name="OVO-VERDE-RACHANDO" type="Sprite" parent="."]
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 5 )
+hframes = 4
+vframes = 4
+frame = 13
+
+[node name="OVO-BLUE-RACHANDO" type="Sprite" parent="."]
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 4 )
+hframes = 4
+vframes = 4
+frame = 13
+
+[node name="OVO-VERDE" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 80, 152 )
+scale = Vector2( 2.625, 2.625 )
+texture = ExtResource( 2 )
+vframes = 2
+
+[node name="animacaoDiro" type="AnimationPlayer" parent="."]
+anims/AparecendoOvoDia = SubResource( 11 )
+anims/AparecendoOvoNoite = SubResource( 12 )
+anims/MexendoOvoDia = SubResource( 13 )
+anims/MexendoOvoNoite = SubResource( 14 )
+anims/PrimeiraFormaDiaIdle = SubResource( 15 )
+anims/PrimeiraFormaDiaIdleNOITE = SubResource( 16 )
+anims/QuebrandoOvoDia = SubResource( 17 )
+anims/QuebrandoOvoNoite = SubResource( 18 )
+
+[node name="Estatus" parent="." instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="AnimationEstatusAparecendo" type="AnimationPlayer" parent="Estatus"]
+anims/aparecendo = SubResource( 19 )
+
+[connection signal="animation_finished" from="animacaoDiro" to="." method="_on_animacaoDiro_animation_finished"]
+[connection signal="animation_finished" from="Estatus/AnimationEstatusAparecendo" to="." method="_on_AnimationEstatusAparecendo_animation_finished"]
