@@ -7,6 +7,7 @@ func InicioDeTudo():
 	pass
 	
 var pen = false
+var nv
 
 var saveData = {
 	
@@ -18,13 +19,27 @@ func setPenis(penis):
 func Evoluir(lv, ovo):
 	match ovo:
 		"A":
-			if lv >= 5:
-				$"Segunda-Forma-Azul".visible = not $"Segunda-Forma-Azul".visible
-				$"Segunda-Forma-Azul/animacaoEvDia".play("Idle")
+			if lv == 0:
+				AparecendoOvoDia()
+			elif lv >=1 and lv <=4:
+				AparecendoPrimeiraFormaDia()
+			elif lv >= 5:
+				AparecendoSegundaFormaDia()
 		"B":
-			if lv >= 5:
-				$"Segunda-Forma-Noite".visible = not $"Segunda-Forma-Noite".visible
-		
+			if lv == 0:
+				AparecendoOvoNoite()
+			elif lv >=1 and lv <=4:
+				AparecendoPrimeiraFormaDia()
+			elif lv >= 5:
+				AparecendoSegundaFormaNoite()
+	$"Estatus/AnimationEstatusAparecendo".play("aparecendo")
+func AparecendoSegundaFormaDia():
+	$"Segunda-Forma-Azul".visible = not $"Segunda-Forma-Azul".visible
+	$"Segunda-Forma-Azul/animacaoEvDia".play("Idle")
+
+func AparecendoSegundaFormaNoite():
+	$"Segunda-Forma-Noite".visible = not $"Segunda-Forma-Noite".visible
+	$"Segunda-Forma-Noite/animacaoEvNoite".play("Idle")
 
 func AparecendoOvoDia():
 	$"animacaoDiro".play("AparecendoOvoDia")
@@ -60,6 +75,24 @@ func _on_animacaoDiro_animation_finished(anim_name):
 		"QuebrandoOvoNoite":
 			AparecendoPrimeiraFormaNoite()
 			#anima()
+		"PrimeiraFormaDiaIdle":
+			nv = $Estatus.getNivel()
+			if nv == 5:
+				$"Primeira-Forma".visible = not $"Primeira-Forma".visible
+				AparecendoSegundaFormaDia()
+			else:
+				$"animacaoDiro".play("PrimeiraFormaDiaIdle")
+		"PrimeiraFormaDiaIdleNOITE":
+			nv = $Estatus.getNivel()
+			if nv == 5:
+				$"Primeira-Forma-Noite".visible = not $"Primeira-Forma-Noite".visible
+				AparecendoSegundaFormaNoite()
+			else:
+				$"animacaoDiro".play("PrimeiraFormaDiaIdleNOITE")
+		#"Segunda-Forma-Azul":
+			#pass
+		#"Segunda-Forma-Noite":
+			#pass
 
 
 func _on_AnimationEstatusAparecendo_animation_finished(anim_name):

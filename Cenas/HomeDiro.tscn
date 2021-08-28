@@ -57,6 +57,7 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_right = 160.0
 margin_bottom = 288.0
 color = Color( 0.796078, 0.54902, 0.960784, 1 )

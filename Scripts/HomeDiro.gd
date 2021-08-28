@@ -11,8 +11,10 @@ var saveGameFileName: String = "res://ArquivosBanco/informacoesDiro.txt"
 
 func _ready():
 	self.loadData()
+	#$Ovos.Evoluir(saveData.get("lv"), saveData.get("ovoEscolhido"))
 	if saveData.get("lv") !=0:
 		$Tocar.visible = not $Tocar.visible
+		#$Ovos.Evoluir(saveData.get("lv"), saveData.get("ovoEscolhido"))
 	
 func loadData() -> void:
 	var dataFile = File.new()
@@ -31,33 +33,35 @@ func loadData() -> void:
 func _on_AnimacaoTransicao_animation_finished(anim_name):
 	resposta = saveData.values()
 	if anim_name == "Entrando":
-		print("chegou ate aqui")
-		var nn = saveData.get("lv")
-		var esc = saveData.get("ovoEscolhido")
-		if esc == "A":
-			match nn:
-				0.0:
-					$Ovos.AparecendoOvoDia()
-				_:
-					anima()
-		elif esc == "B":
-			print("chegou ate aqui2")
-			match nn:
-				0.0:
-					$Ovos.AparecendoOvoNoite()
-				_:
-					print("chegou ate aqui3")
-					anima()
+		$Ovos.Evoluir(saveData.get("lv"), saveData.get("ovoEscolhido"))
+		pass
+		#print("chegou ate aqui")
+		#var nn = saveData.get("lv")
+		#var esc = saveData.get("ovoEscolhido")
+		#if esc == "A":
+			#match nn:
+				#0.0:
+					#$Ovos.AparecendoOvoDia()
+				#_:
+					#anima()
+		#elif esc == "B":
+			#print("chegou ate aqui2")
+			#match nn:
+				#0.0:
+					#$Ovos.AparecendoOvoNoite()
+				#_:
+					#print("chegou ate aqui3")
+					#anima()
 	elif anim_name == "Saindo":
 		pass
 		
-func anima():
-	$"Ovos/Estatus/AnimationEstatusAparecendo".play("aparecendo")
+#func anima():
+	#$"Ovos/Estatus/AnimationEstatusAparecendo".play("aparecendo")
 	#$"Estatus/AnimationEstatusAparecendo".play("aparecendo")
-	if resposta.front() == "A":
-		$Ovos.AparecendoPrimeiraFormaDia()
-	elif resposta.front() == "B":
-		$Ovos.AparecendoPrimeiraFormaNoite()
+	#if resposta.front() == "A":
+		#$Ovos.AparecendoPrimeiraFormaDia()
+	#elif resposta.front() == "B":
+		#$Ovos.AparecendoPrimeiraFormaNoite()
 
 func _on_Save_pressed():
 	print("Indo Salvar...")
