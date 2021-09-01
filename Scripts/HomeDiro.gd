@@ -15,6 +15,7 @@ func _ready():
 	if saveData.get("lv") !=0:
 		$Tocar.visible = not $Tocar.visible
 		#$Ovos.Evoluir(saveData.get("lv"), saveData.get("ovoEscolhido"))
+	$Timer.start()
 	
 func loadData() -> void:
 	var dataFile = File.new()
@@ -90,3 +91,19 @@ func _on_Tocar_pressed():
 		#$Ovos/Estatus.Salvar()
 	#else:
 		#$Ovos/Estatus.IniciarTudo()
+
+func AtualizarComBanco():
+	loadData()
+
+func SalvarAutomatico():
+	$Ovos/Estatus.Salvar()
+
+func _on_Mapa_pressed():
+	get_tree().change_scene("res://Cenas/Mapa.tscn")
+
+
+func _on_Timer_timeout():
+	SalvarAutomatico()
+	AtualizarComBanco()
+	if saveData.get("lv") == 5:
+		$Mapa.visible = not $Mapa.visible
