@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Img/RostoFundo.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/HomeDiro.gd" type="Script" id=2]
+[ext_resource path="res://iconGodot.png" type="Texture" id=3]
 [ext_resource path="res://Cenas/Ovos.tscn" type="PackedScene" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 
@@ -107,6 +108,24 @@ shape = SubResource( 3 )
 [node name="AnimationTocar" type="AnimationPlayer" parent="Tocar"]
 anims/Sumindo = SubResource( 4 )
 
+[node name="Mapa" type="TextureButton" parent="."]
+visible = false
+margin_left = 8.0
+margin_top = 216.0
+margin_right = 48.0
+margin_bottom = 256.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="animation_finished" from="transição/ColorRect/AnimacaoTransicao" to="." method="_on_AnimacaoTransicao_animation_finished"]
 [connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="Tocar" to="." method="_on_Tocar_pressed"]
+[connection signal="pressed" from="Mapa" to="." method="_on_Mapa_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -336,7 +336,6 @@ scale = Vector2( 2.625, 2.625 )
 texture = ExtResource( 9 )
 hframes = 5
 vframes = 6
-frame = 15
 
 [node name="animacaoEvDia" type="AnimationPlayer" parent="Segunda-Forma-Azul"]
 anims/AndandoDireita = SubResource( 6 )

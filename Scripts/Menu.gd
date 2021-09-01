@@ -1,6 +1,6 @@
 extends Node2D
 
-var existe
+#var existe
 var btn
 
 var saveData = {
@@ -16,11 +16,11 @@ func _ready():
 func loadData() -> void:
 	var dataFile = File.new()
 	if not dataFile.file_exists(saveGameFileName):
-		existe = false
+		#existe = false
 		print("Não Existe Arquivo")
 		#return 
 	else:
-		existe = true
+		#existe = true
 		print("Existe Arquivo")
 		#$botao/TextureButton.visible = not $botao/TextureButton.visible
 		dataFile.open(saveGameFileName, File.READ)
@@ -50,7 +50,7 @@ func _on_animaLogo2_animation_finished(anim_name):
 		$"Fundo/animaçao2/animaLogo2".play("batebate")
 	elif anim_name == "batebate":
 		$Fundo/planetas/planeta1/AnimationPlayerPlaneta.play("surgindopraneta")
-		if existe == false:
+		if saveData.get("ovoEscolhido") == "C":
 			#$botao/TextureButton/AnimationPlayerBotao.play("aparecerBotao")
 			$botao/Iniciar/AnimationPlayerBotao.play("aparecerBotao")
 		else:
@@ -61,10 +61,10 @@ func _on_AnimationPlayerPlaneta_animation_finished(anim_name):
 	$Fundo/planetas/planeta1/AnimationPlayerPlaneta.play("RodaRodaJequiti")
 
 func _on_Timer_timeout():
-	if existe == true:
-		$botao/Voltando.visible = not $botao/Voltando.visible
-	elif existe == false:
+	if saveData.get("ovoEscolhido") == "C":
 		$botao/Iniciar.visible = not $botao/Iniciar.visible
+	else:
+		$botao/Voltando.visible = not $botao/Voltando.visible
 
 func _on_AnimationPlayerBotao_animation_finished(anim_name):
 	$botao/btndd.visible = not $botao/btndd.visible
@@ -75,9 +75,9 @@ func _on_AnimationPlayerBotao2_animation_finished(anim_name):
 	$Timer.start()
 
 func _on_btndd_pressed():
-	if existe == true:
-		btn = 2
-		$"transição/ColorRect/AnimacaoTransicao".play("Saindo")
-	elif existe == false:
+	if saveData.get("ovoEscolhido") == "C":
 		btn = 1
+		$"transição/ColorRect/AnimacaoTransicao".play("Saindo")
+	else:
+		btn = 2
 		$"transição/ColorRect/AnimacaoTransicao".play("Saindo")
